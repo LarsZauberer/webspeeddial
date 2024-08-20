@@ -22,7 +22,8 @@
           python3
         ];
 
-        script = pkgs.stdenv.mkDerivation (finalAttrs: {
+        /*
+           script = pkgs.stdenv.mkDerivation (finalAttrs: {
           pname = "webspeeddial";
           version = "0.1";
 
@@ -40,6 +41,15 @@
 
           meta = {};
         });
+        */
+        script = pkgs.python3Packages.buildPythonApplication {
+          pname = "webspeeddial";
+          version = "0.1";
+
+          nativeBuildInputs = nbi;
+
+          src = ./.;
+        };
       in {
         packages.default = script;
 
