@@ -1,0 +1,8 @@
+[package]
+name = "web_speeddial"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+confy = "0.6.1"
+serde = { version = "1.0.208", features = ["derive"] }
