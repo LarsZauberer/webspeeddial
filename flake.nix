@@ -16,40 +16,36 @@
       system: let
         pkgs = import nixpkgs {inherit system;};
         bi = with pkgs; [
-          # Rust
-          cargo
-          rustc
-          rustfmt
-
-          # Make Rust work
-          pkg-config
-          stdenv.cc.libc
-          clang
         ];
 
         nbi = with pkgs; [
-          fzf
+          python3
         ];
 
-        # clang config
-        clang_path = "${pkgs.llvmPackages.libclang.lib}/lib";
+        script = pkgs.stdenv.mkDerivation (finalAttrs: {
+          pname = "webspeeddial";
+          version = "0.1";
 
-        # Package
-        web-speeddial = pkgs.rustPlatform.buildRustPackage {
-          name = "web_speeddial";
+          outputs = ["out"];
+
           src = ./.;
-          cargoLock.lockFile = ./Cargo.lock;
+
           buildInputs = bi;
           nativeBuildInputs = nbi;
-          LIBCLANG_PATH = clang_path;
-        };
+
+          installPhase = ''
+            mkdir -p $out/bin
+            cp -rv $src/main.py $out/bin/webspeeddial.py
+          '';
+
+          meta = {};
+        });
       in {
-        packages.default = web-speeddial;
+        packages.default = script;
 
         devShell = pkgs.mkShell {
           buildInputs = bi;
           nativeBuildInputs = nbi;
-          LIBCLANG_PATH = clang_path;
         };
       }
     );
