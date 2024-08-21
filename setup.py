@@ -8,5 +8,5 @@ setup(
     # Modules to import from other scripts:
     packages=find_packages(),
     # Executables
-    scripts=["webspeeddial.py"],
+    scripts=["main.py"],
 )

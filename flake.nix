@@ -38,7 +38,6 @@
         };
       in {
         packages.default = python_script;
-        apps.default = flake-utils.lib.mkApp {drv = self.packages.${system}.default;};
 
         devShell = pkgs.mkShell {
           buildInputs = bi;
