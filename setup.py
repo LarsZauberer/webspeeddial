@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="webspeeddial",
-    version="0.1",
+    version="1.0",
     # Modules to import from other scripts:
     packages=find_packages(),
     # Executables

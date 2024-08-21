@@ -22,36 +22,22 @@
           python3
         ];
 
-        /*
-           script = pkgs.stdenv.mkDerivation (finalAttrs: {
+        python_script = pkgs.python3Packages.buildPythonApplication {
           pname = "webspeeddial";
-          version = "0.1";
+          version = "1.0";
 
-          outputs = ["out"];
+          nativeBuildInputs = nbi;
 
           src = ./.;
-
-          buildInputs = bi;
-          nativeBuildInputs = nbi;
 
           installPhase = ''
             mkdir -p $out/bin
-            cp -rv $src/main.py $out/bin/webspeeddial.py
+            cp ${./main.py} $out/bin/webspeeddial
+            chmod +x $out/bin/webspeeddial
           '';
-
-          meta = {};
-        });
-        */
-        script = pkgs.python3Packages.buildPythonApplication {
-          pname = "webspeeddial";
-          version = "0.1";
-
-          nativeBuildInputs = nbi;
-
-          src = ./.;
         };
       in {
-        packages.default = script;
+        packages.default = python_script;
 
         devShell = pkgs.mkShell {
           buildInputs = bi;
