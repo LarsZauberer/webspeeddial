@@ -12,8 +12,32 @@ struct BookMark {
     name: String,
     link: String,
 }
+
+impl PartialEq for BookMark {
+    fn eq(&self, other: &Self) -> bool {
+        self.name == other.name
+    }
+}
+
 fn main() {
     let config: Config = confy::load("webspeeddial", "bookmarks").unwrap();
+    check_config_validity(&config);
+}
+
+fn check_config_validity(config: &Config) -> bool {
+    has_duplicated::<BookMark>(&config.bookmarks)
+}
+
+fn has_duplicated<T: PartialEq>(arr: &[T]) -> bool {
+    let n = arr.len();
+    for i in 0..n {
+        for e in (i+1)..n {
+            if arr[i] == arr[e] {
+                return true;
+            }
+        }
+    }
+    false
 }
 
 fn open_file(url: &str) {
@@ -52,10 +76,10 @@ fn run_menu(data: &[String], runner: &str) -> Option<String> {
         if let Ok(waited_output) = waiting_result {
             let decode_result = String::from_utf8(waited_output.stdout);
             decode_result.ok()
-         } else {
-             println!("{:?}", waiting_result.err());
-             None
-         }
+        } else {
+            println!("{:?}", waiting_result.err());
+            None
+        }
     } else {
         println!("{:?}", fzf.output());
         None
@@ -63,7 +87,13 @@ fn run_menu(data: &[String], runner: &str) -> Option<String> {
 }
 
 fn join_str(data: &[String], delimiter: &str) -> String {
-    data.iter().fold(String::new(), |x, y| if x.is_empty() {x + y} else {x + delimiter + y})
+    data.iter().fold(String::new(), |x, y| {
+        if x.is_empty() {
+            x + y
+        } else {
+            x + delimiter + y
+        }
+    })
 }
 
 #[cfg(test)]
@@ -75,5 +105,4 @@ mod tests {
         let data: [String; 2] = [String::from("hello"), String::from("world")];
         assert_eq!(join_str(&data, "\n"), String::from("hello\nworld"));
     }
-
 }
