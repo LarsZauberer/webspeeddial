@@ -1,6 +1,19 @@
+use serde::{Deserialize, Serialize};
 use std::process::{Command, Stdio};
 
+#[derive(Serialize, Deserialize, Debug, Default)]
+struct Config {
+    runner: String,
+    bookmarks: Vec<BookMark>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct BookMark {
+    name: String,
+    link: String,
+}
 fn main() {
+    let config: Config = confy::load("webspeeddial", "bookmarks").unwrap();
 }
 
 fn open_file(url: &str) {
