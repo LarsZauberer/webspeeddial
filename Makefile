@@ -18,6 +18,9 @@ $(build)/utils.o: $(src)/utils.cpp
 $(build)/commands.o: $(src)/commands.cpp
 	g++ -c $(CXXFLAGS) -o $(build)/commands.o $(src)/commands.cpp
 
+tests/tests: tests/tests.cpp
+	g++ $(CXXFLAGS) -lCatch2Main -lCatch2 -o tests/tests tests/tests.cpp
+
 clean:
 	rm -f $(build)/*.o
 	rm -f $(build)/webspeeddial
