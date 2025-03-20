@@ -25,3 +25,21 @@ string bookmarks_to_fzf(BookMark **bookmarks, size_t n) {
 
   return res;
 }
+
+/// This searches an element in an pointer array. It compares pointers not the
+/// element contents.
+BookMark *find_name(string *name, BookMark **arr, size_t n) {
+  if (!arr) {
+    return NULL;
+  }
+  if (!name) {
+    return NULL;
+  }
+  for (size_t i = 0; i < n; i++) {
+    if ((*name).compare(arr[i]->name) == 0) { // Check if equal
+      return arr[i];
+    }
+  }
+  return NULL;
+}
+

@@ -1,17 +1,26 @@
+#include <catch2/catch_test_macros.hpp>
+#include <cstddef>
 #define CATCH_CONFIG_MAIN
+#include "../src/config.h"
+#include "../src/utils.h"
 #include <catch2/catch_all.hpp>
 
-#include <cstdint>
-
-uint32_t factorial( uint32_t number ) {
-    return number <= 1 ? number : factorial(number-1) * number;
+TEST_CASE("BookMark to Fzf with null", "[bookmarks_to_fzf]") {
+  BookMark **bookmarks = NULL;
+  REQUIRE(bookmarks_to_fzf(bookmarks, 0) == "");
 }
 
-TEST_CASE( "Factorials are computed", "[factorial]" ) {
-    REQUIRE( factorial( 1) == 1 );
-    REQUIRE( factorial( 2) == 2 );
-    REQUIRE( factorial( 3) == 6 );
-    REQUIRE( factorial(10) == 3'628'800 );
+TEST_CASE("BookMark to Fzf null element", "[bookmarks_to_fzf]") {
+  BookMark *ap = NULL;
+  BookMark *bookmarks[] = {ap};
+  REQUIRE(bookmarks_to_fzf(bookmarks, 1) == "");
+}
+
+TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
+  BookMark a = {"Hello", "1"};
+  BookMark b = {"World", "2"};
+  BookMark *bookmarks[] = {&a, &b};
+  REQUIRE(bookmarks_to_fzf(bookmarks, 2) == "Hello\nWorld");
 }
 
 TEST_CASE("Find BookMark null array", "[find_name]") {
