@@ -1,47 +1,49 @@
-#include "config.h"
 #include <cstring>
 #include <iostream>
 #include <cstdarg>
 #include <cstdio>
 
-void runner(char* runner, char** data, char* res) {
+using std::string;
+
+/// This function will never return a null. It will return an empty string if it fails.
+string runner(string* runner, string* data) {
     // Null checker
-    res = (char*) "";
     if (!runner) {
-        return;
+        return "";
     }
     if (!data) {
-        return;
+        return "";
     }
 
     // Open the selector
-    FILE* pipe(popen("echo 'Hello\nWorld' | fzf", "r"));
+    string cmd = "echo '" + *data + "' | " + *runner;
+    FILE* pipe(popen(cmd.data(), "r"));
     if (!pipe) {
         std::cout << "Error: Couldn't get file descriptor for the command" << std::endl;
-        return;
+        return "";
     }
 
     // Read the 255 characters from the file
-    fgets(res, 255, pipe);
+    char read[256];
+    fgets(read, 255, pipe);
 
-    std::cout << "Selected: " << res << std::endl;
+    std::cout << "Selected: " << read << std::endl;
 
     // Return file descriptor
     pclose(pipe);
+    return read;
 }
 
-void xdg_open(char* link) {
+void xdg_open(string* link) {
     if (!link) {
         return;
     }
 
-    std::cout << "Opening: " << link << std::endl;
+    std::cout << "Opening: " << *link << std::endl;
 
-    char cmd[LINK_SIZE + 15];
-    std::strncpy(cmd, "xdg-open ", 15);
-    std::strncpy(cmd, link, LINK_SIZE);
+    string cmd = "xdg-open " + *link;
 
-    FILE* f = popen(cmd, "r");
+    FILE* f = popen(cmd.data(), "r");
     if (!f) {
         std::cout << "Error: XDG-Open failed" << std::endl;
     }

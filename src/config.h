@@ -2,21 +2,20 @@
 #define config_h_INCLUDED
 
 #include <stdlib.h>
+#include <string>
 
-const size_t NAME_SIZE = 255;
-const size_t RUNNER_SIZE = 255;
-const size_t LINK_SIZE = 1024;
+using std::string;
 
 class BookMark {
-    public:
-        char name [NAME_SIZE];
-        char link [LINK_SIZE];
+public:
+  string name;
+  string link;
 };
 
 class Config {
-    public:
-        char runner[NAME_SIZE];
-        BookMark* bookmarks;
+public:
+  string runner;
+  BookMark *bookmarks;
 };
 
 #endif // config_h_INCLUDED
