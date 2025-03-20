@@ -2,8 +2,8 @@ CXX=g++
 CXXFLAGS=-O2 -std=c++20
 src=src
 build=build
-targets=$(build)/webspeeddial
-tests=$(build)/tests
+tests=tests
+targets=$(build)/webspeeddial $(build)/tests
 
 all: $(targets) $(tests)
 
@@ -19,9 +19,9 @@ $(build)/utils.o: $(src)/utils.cpp
 $(build)/commands.o: $(src)/commands.cpp
 	g++ -c $(CXXFLAGS) -o $(build)/commands.o $(src)/commands.cpp
 
-$(build)/tests: $(build)/tests.cpp
-	g++ $(CXXFLAGS) -lCatch2Main -lCatch2 -o tests/tests tests/tests.cpp
+$(build)/tests: $(tests)/tests.cpp $(build)/utils.o
+	g++ $(CXXFLAGS) -lCatch2Main -lCatch2 -o $(build)/tests tests/tests.cpp $(build)/utils.o
 
 clean:
 	rm -f $(build)/*.o
-	rm -f $(build)/webspeeddial
+	rm -f $(targets)
