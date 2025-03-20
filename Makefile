@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-O0 -std=c++20 -g
+CXXFLAGS=-O2 -std=c++20 -g -fsanitize=address
 src=src
 build=build
 tests=tests
