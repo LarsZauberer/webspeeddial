@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-O2 -std=c++20
+CXXFLAGS=-O0 -std=c++20 -g
 src=src
 build=build
 tests=tests
