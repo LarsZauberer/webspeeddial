@@ -24,6 +24,7 @@ string runner(string* runner, string* data) {
     }
 
     // Read the 255 characters from the file
+    // TODO: Fix the length limitation
     char read[256];
     fgets(read, 255, pipe);
 
@@ -35,6 +36,7 @@ string runner(string* runner, string* data) {
 }
 
 void xdg_open(string* link) {
+    // Null Checker
     if (!link) {
         return;
     }
