@@ -16,6 +16,8 @@ class Config {
 public:
   string runner;
   BookMark *bookmarks;
+
+  Config();
 };
 
 #endif // config_h_INCLUDED
