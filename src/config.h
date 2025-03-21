@@ -17,7 +17,9 @@ public:
   string runner;
   BookMark *bookmarks;
 
-  Config();
+  Config(const string *path);
+
+  void defaults();
 };
 
 #endif // config_h_INCLUDED

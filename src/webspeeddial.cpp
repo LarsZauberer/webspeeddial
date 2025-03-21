@@ -9,7 +9,8 @@
 int main() {
     // BookMark test = {"test", "https://thealternative.ch"};
     // BookMark bookmarks[] = {test};
-    Config cfg;
+    const string config_path = "/home/lars/.config/webspeeddial/config.yaml";
+    Config cfg(&config_path);
 
     std::cout << cfg.runner << std::endl;
 
