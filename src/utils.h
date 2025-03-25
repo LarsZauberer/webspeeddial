@@ -3,10 +3,13 @@
 
 #include "config.h"
 #include <string>
+#include "concepts.h"
 
-std::string bookmarks_to_fzf (BookMark** bookmarks, size_t n);
+template<typename T> requires Buffer<T, BookMark*>
+string bookmarks_to_fzf (T *bookmarks, size_t n);
 
-BookMark *find_name(string *name, BookMark **arr, size_t n);
+template<typename T> requires Buffer<T, BookMark*>
+BookMark *find_name(string *name, T *arr, size_t n);
 
 string *remove_trailing(string *str); 
 

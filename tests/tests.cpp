@@ -5,26 +5,28 @@
 #include "../src/utils.h"
 #include <catch2/catch_all.hpp>
 
+using std::vector;
+
 TEST_CASE("BookMark to Fzf with null", "[bookmarks_to_fzf]") {
-  BookMark **bookmarks = NULL;
+  vector<BookMark*> *bookmarks = NULL;
   REQUIRE(bookmarks_to_fzf(bookmarks, 0) == "");
 }
 
 TEST_CASE("BookMark to Fzf null element", "[bookmarks_to_fzf]") {
   BookMark *ap = NULL;
-  BookMark *bookmarks[] = {ap};
-  REQUIRE(bookmarks_to_fzf(bookmarks, 1) == "");
+  vector<BookMark*> bookmarks = {ap};
+  REQUIRE(bookmarks_to_fzf(&bookmarks, 1) == "");
 }
 
 TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
-  BookMark *bookmarks[] = {&a, &b};
-  REQUIRE(bookmarks_to_fzf(bookmarks, 2) == "Hello\nWorld");
+  vector<BookMark*> bookmarks = {&a, &b};
+  REQUIRE(bookmarks_to_fzf(&bookmarks, 2) == "Hello\nWorld");
 }
 
 TEST_CASE("Find BookMark null array", "[find_name]") {
-  BookMark **bookmarks = NULL;
+  vector<BookMark*> *bookmarks = NULL;
   string find = "Hello";
   REQUIRE(find_name(&find, bookmarks, 0) == NULL);
 }
@@ -32,25 +34,25 @@ TEST_CASE("Find BookMark null array", "[find_name]") {
 TEST_CASE("Find BookMark null element", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
-  BookMark *bookmarks[] = {&a, &b};
+  vector<BookMark*> bookmarks = {&a, &b};
   string *find = NULL;
-  REQUIRE(find_name(find, bookmarks, 2) == NULL);
+  REQUIRE(find_name(find, &bookmarks, 2) == NULL);
 }
 
 TEST_CASE("Find BookMark first_ele", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
-  BookMark *bookmarks[] = {&a, &b};
+  vector<BookMark*> bookmarks = {&a, &b};
   string find = "Hello";
-  REQUIRE(find_name(&find, bookmarks, 2) == &a);
+  REQUIRE(find_name(&find, &bookmarks, 2) == &a);
 }
 
 TEST_CASE("Find BookMark second_ele", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
-  BookMark *bookmarks[] = {&a, &b};
+  vector<BookMark*> bookmarks = {&a, &b};
   string find = "World";
-  REQUIRE(find_name(&find, bookmarks, 2) == &b);
+  REQUIRE(find_name(&find, &bookmarks, 2) == &b);
 }
 
 TEST_CASE("Remove Trailing Null", "[remove_trailing]") {

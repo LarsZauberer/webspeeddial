@@ -2,25 +2,27 @@
 #include "config.h"
 #include <cstddef>
 #include <string>
+#include <vector>
 
 using std::string;
 
-string bookmarks_to_fzf(BookMark **bookmarks, size_t n) {
+template<typename T> requires Buffer<T, BookMark*>
+string bookmarks_to_fzf(T *bookmarks, size_t n) {
   if (!bookmarks) {
     return "";
   }
   string res = "";
   for (size_t i = 0; i < n; i++) {
-    if (!*bookmarks)
+    if (!(*bookmarks)[i])
       break;
 
     if (i == n - 1) {
       // Last element
-      res += bookmarks[i]->name;
+      res += (*bookmarks)[i]->name;
       continue;
     }
 
-    res += bookmarks[i]->name + "\n";
+    res += (*bookmarks)[i]->name + "\n";
   }
 
   return res;
@@ -28,7 +30,8 @@ string bookmarks_to_fzf(BookMark **bookmarks, size_t n) {
 
 /// This searches an element in an pointer array. It compares pointers not the
 /// element contents.
-BookMark *find_name(string *name, BookMark **arr, size_t n) {
+template<typename T> requires Buffer<T, BookMark*>
+BookMark *find_name(string *name, T *arr, size_t n) {
   if (!arr) {
     return NULL;
   }
@@ -36,8 +39,11 @@ BookMark *find_name(string *name, BookMark **arr, size_t n) {
     return NULL;
   }
   for (size_t i = 0; i < n; i++) {
-    if ((*name).compare(arr[i]->name) == 0) { // Check if equal
-      return arr[i];
+    if (!(*arr)[i]) {
+        continue;
+    }
+    if ((*name).compare((*arr)[i]->name) == 0) { // Check if equal
+      return (*arr)[i];
     }
   }
   return NULL;
@@ -58,3 +64,7 @@ string *remove_trailing(string *str) {
 
     return str;
 }
+
+template string bookmarks_to_fzf(std::vector<BookMark*>*, size_t);
+
+template BookMark *find_name(string*, std::vector<BookMark*>*, size_t);

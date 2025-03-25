@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-O2 -std=c++20 -g -fsanitize=address
+CXXFLAGS=-O2 -march=native -std=c++20 -g -fsanitize=address
 LD_FLAGS=-lyaml-cpp
 src=src
 build=build
