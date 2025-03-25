@@ -1,3 +1,4 @@
+#include "utils.h"
 #include <cstring>
 #include <iostream>
 #include <cstdarg>
@@ -23,16 +24,21 @@ string runner(string* runner, string* data) {
         return "";
     }
 
-    // Read the 255 characters from the file
-    // TODO: Fix the length limitation
-    char read[256];
-    fgets(read, 255, pipe);
+    // Read stdout from the file
+    std::string out = "";
+    out.reserve(128);
+    char c;
+    while (c != EOF){
+        c = fgetc(pipe);
+        out += c;
+    }
+    remove_trailing(&out);
 
-    std::cout << "Selected: " << read << std::endl;
+    std::cout << "Selected: " << out << std::endl;
 
     // Return file descriptor
     pclose(pipe);
-    return read;
+    return out;
 }
 
 void xdg_open(string* link) {
@@ -44,7 +50,6 @@ void xdg_open(string* link) {
     std::cout << "Opening: " << *link << std::endl;
 
     string cmd = "xdg-open " + *link;
-
     FILE* f = popen(cmd.data(), "r");
     if (!f) {
         std::cout << "Error: XDG-Open failed" << std::endl;
