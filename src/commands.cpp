@@ -29,10 +29,10 @@ std::string copy_content_from_file(FILE *f) {
   // Read stdout from the file
   std::string out = "";
   out.reserve(128);
-  char c;
-  while (c != EOF) {
+  int c;
+  while (c != -1) {
     c = fgetc(f);
-    out += c;
+    out += (char) c;
   }
 
   return out;
