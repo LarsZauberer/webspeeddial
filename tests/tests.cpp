@@ -93,3 +93,13 @@ TEST_CASE("hello world value", "[copy_content_from_file]") {
 
   REQUIRE(result == "hello world!");
 }
+
+TEST_CASE("echo simple run", "[cmd_file]") {
+    string cmd = "echo";
+    REQUIRE(cmd_file(&cmd) != NULL); 
+}
+
+TEST_CASE("echo hello world", "[run_cmd]") {
+    string cmd = "echo 'Hello World!'";
+    REQUIRE(run_cmd(&cmd) == "Hello World!");
+}
