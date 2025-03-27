@@ -3,6 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "../src/config.h"
 #include "../src/utils.h"
+#include "../src/commands.h"
 #include <catch2/catch_all.hpp>
 
 using std::vector;
@@ -24,6 +25,8 @@ TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
   vector<BookMark*> bookmarks = {&a, &b};
   REQUIRE(bookmarks_to_fzf(&bookmarks, 2) == "Hello\nWorld");
 }
+
+////
 
 TEST_CASE("Find BookMark null array", "[find_name]") {
   vector<BookMark*> *bookmarks = NULL;
@@ -55,6 +58,8 @@ TEST_CASE("Find BookMark second_ele", "[find_name]") {
   REQUIRE(find_name(&find, &bookmarks, 2) == &b);
 }
 
+////
+
 TEST_CASE("Remove Trailing Null", "[remove_trailing]") {
   string *a = NULL;
   REQUIRE(remove_trailing(a) == NULL);
@@ -70,4 +75,11 @@ TEST_CASE("Remove Trailing with backslash n", "[remove_trailing]") {
   string a = "test\n";
   REQUIRE(*remove_trailing(&a) == "test");
   REQUIRE(remove_trailing(&a) == &a);
+}
+
+////
+
+TEST_CASE("null", "[copy_content_from_file]") {
+    FILE *f = NULL;
+    string out = copy_content_from_file(f);
 }

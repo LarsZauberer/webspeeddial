@@ -1,58 +1,50 @@
-#include "utils.h"
+#include "commands.h"
+#include <cstdarg>
+#include <cstddef>
+#include <cstdio>
 #include <cstring>
 #include <iostream>
-#include <cstdarg>
-#include <cstdio>
 
-using std::string;
-
-/// This function will never return a null. It will return an empty string if it fails.
-string runner(string* runner, string* data) {
-    // Null checker
-    if (!runner) {
-        return "";
+FILE *cmd_file(std::string* cmd,
+              std::string* err) {
+  if (!cmd) {
+      return NULL;
+  }
+  // Open the selector
+  FILE *pipe(popen((*cmd).data(), "r"));
+  if (!pipe) {
+    if (!err) {
+        std::cout << *err 
+                  << std::endl;
     }
-    if (!data) {
-        return "";
-    }
-
-    // Open the selector
-    string cmd = "echo '" + *data + "' | " + *runner;
-    FILE* pipe(popen(cmd.data(), "r"));
-    if (!pipe) {
-        std::cout << "Error: Couldn't get file descriptor for the command" << std::endl;
-        return "";
-    }
-
-    // Read stdout from the file
-    std::string out = "";
-    out.reserve(128);
-    char c;
-    while (c != EOF){
-        c = fgetc(pipe);
-        out += c;
-    }
-    remove_trailing(&out);
-
-    std::cout << "Selected: " << out << std::endl;
-
-    // Return file descriptor
-    pclose(pipe);
-    return out;
+    return NULL;
+  }
+  return pipe;
 }
 
-void xdg_open(string* link) {
-    // Null Checker
-    if (!link) {
-        return;
+std::string copy_content_from_file(FILE *f) {
+  if (!f) {
+    return "";
+  }
+  // Read stdout from the file
+  std::string out = "";
+  out.reserve(128);
+  char c;
+  while (c != EOF) {
+    c = fgetc(f);
+    out += c;
+  }
+
+  return out;
+}
+
+std::string run_cmd(std::string* cmd, std::string* err) {
+    if (!cmd) {
+        return "";
     }
 
-    std::cout << "Opening: " << *link << std::endl;
-
-    string cmd = "xdg-open " + *link;
-    FILE* f = popen(cmd.data(), "r");
-    if (!f) {
-        std::cout << "Error: XDG-Open failed" << std::endl;
-    }
-    pclose(f);
+    FILE* file = cmd_file(cmd, err);
+    std::string out = copy_content_from_file(file); 
+    fclose(file);
+    return out;
 }

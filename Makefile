@@ -11,7 +11,7 @@ all: $(targets) $(tests)
 $(build)/webspeeddial: $(build)/webspeeddial.o $(build)/utils.o $(build)/commands.o $(build)/config.o
 	$(CXX) $(CXXFLAGS) $(LD_FLAGS) -o $@ $^
 
-$(build)/tests: $(tests)/tests.cpp $(build)/utils.o
+$(build)/tests: $(tests)/tests.cpp $(build)/utils.o $(build)/commands.o $(build)/config.o
 	$(CXX) $(CXXFLAGS) $(LD_FLAGS) -lCatch2Main -lCatch2 -o $@ $^
 
 $(build)/%.o: $(src)/%.cpp
