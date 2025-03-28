@@ -1,9 +1,12 @@
 #include <string.h>
 #include "utils.h"
 
-using std::string;
-
-string *remove_trailing(string *str) {
+/**
+ * `remove_trailing` removes a trailing `\n` from a giving sting
+ * @param str Is the string that needs is beeing stripped
+ * @return It returns the pointer to the modified string
+ */
+std::string *remove_trailing(std::string *str) {
     if (!str) {
         return NULL;
     }

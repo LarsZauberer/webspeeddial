@@ -6,25 +6,27 @@
 #include "../src/config.h"
 #include "../src/utils.h"
 #include <catch2/catch_all.hpp>
+#include "../src/Runner.h"
+#include "../src/MockRunner.h"
 
 using std::vector;
 
 TEST_CASE("BookMark to Fzf with null", "[bookmarks_to_fzf]") {
   vector<BookMark *> *bookmarks = NULL;
-  REQUIRE(bookmarks_to_fzf(bookmarks, 0) == "");
+  REQUIRE(bookmarks_to_fzf(bookmarks) == "");
 }
 
 TEST_CASE("BookMark to Fzf null element", "[bookmarks_to_fzf]") {
   BookMark *ap = NULL;
   vector<BookMark *> bookmarks = {ap};
-  REQUIRE(bookmarks_to_fzf(&bookmarks, 1) == "");
+  REQUIRE(bookmarks_to_fzf(&bookmarks) == "");
 }
 
 TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
-  REQUIRE(bookmarks_to_fzf(&bookmarks, 2) == "Hello\nWorld");
+  REQUIRE(bookmarks_to_fzf(&bookmarks) == "Hello\nWorld");
 }
 
 ////
@@ -32,7 +34,7 @@ TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
 TEST_CASE("Find BookMark null array", "[find_name]") {
   vector<BookMark *> *bookmarks = NULL;
   string find = "Hello";
-  REQUIRE(find_name(&find, bookmarks, 0) == NULL);
+  REQUIRE(find_name(&find, bookmarks) == NULL);
 }
 
 TEST_CASE("Find BookMark null element", "[find_name]") {
@@ -40,7 +42,7 @@ TEST_CASE("Find BookMark null element", "[find_name]") {
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
   string *find = NULL;
-  REQUIRE(find_name(find, &bookmarks, 2) == NULL);
+  REQUIRE(find_name(find, &bookmarks) == NULL);
 }
 
 TEST_CASE("Find BookMark first_ele", "[find_name]") {
@@ -48,7 +50,7 @@ TEST_CASE("Find BookMark first_ele", "[find_name]") {
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
   string find = "Hello";
-  REQUIRE(find_name(&find, &bookmarks, 2) == &a);
+  REQUIRE(find_name(&find, &bookmarks) == &a);
 }
 
 TEST_CASE("Find BookMark second_ele", "[find_name]") {
@@ -56,7 +58,7 @@ TEST_CASE("Find BookMark second_ele", "[find_name]") {
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
   string find = "World";
-  REQUIRE(find_name(&find, &bookmarks, 2) == &b);
+  REQUIRE(find_name(&find, &bookmarks) == &b);
 }
 
 ////
@@ -82,24 +84,33 @@ TEST_CASE("Remove Trailing with backslash n", "[remove_trailing]") {
 
 TEST_CASE("null", "[copy_content_from_file]") {
   FILE *f = NULL;
-  string out = copy_content_from_file(f);
+  string *out = copy_content_from_file(f);
+  REQUIRE(out == NULL);
 }
 
 TEST_CASE("hello world value", "[copy_content_from_file]") {
   string test_str = string("hello world!");
   FILE *f = fmemopen(test_str.data(), test_str.size(), "r");
-  std::string result = copy_content_from_file(f);
-  fclose(f);
+  std::string *result = copy_content_from_file(f);
 
-  REQUIRE(result == "hello world!");
-}
-
-TEST_CASE("echo simple run", "[cmd_file]") {
-    string cmd = "echo";
-    REQUIRE(cmd_file(&cmd) != NULL); 
+  REQUIRE(*result == "hello world!");
+  delete result;
 }
 
 TEST_CASE("echo hello world", "[run_cmd]") {
     string cmd = "echo 'Hello World!'";
-    REQUIRE(run_cmd(&cmd) == "Hello World!\n");
+    Runner r(&cmd);
+    string *out = run_cmd(&r);
+    REQUIRE(out != NULL);
+    REQUIRE(*out == "Hello World!\n");
+    delete out;
+}
+
+TEST_CASE("real output", "[run_cmd]") {
+    string data = "This is some data!";
+    MockRunner r(&data);
+    string *out = run_cmd(&r);
+    REQUIRE(out != NULL);
+    REQUIRE(*out == data);
+    delete out;
 }
