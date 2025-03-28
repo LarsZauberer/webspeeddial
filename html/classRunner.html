@@ -108,19 +108,87 @@ $(function(){initNavTree('classRunner.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Runner Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="conceptCMD__Runner.html" title="Concept describing a system that runs a command in the terminal and returns a file descriptor It has ...">CMD_Runner</a> to run system commands.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Runner_8h_source.html">Runner.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a273231250524bc94dc9c9038d67f0b59" id="r_a273231250524bc94dc9c9038d67f0b59"><td class="memItemLeft" align="right" valign="top"><a id="a273231250524bc94dc9c9038d67f0b59" name="a273231250524bc94dc9c9038d67f0b59"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Runner</b> (std::string *cmd, std::string *err=NULL)</td></tr>
+<tr class="memitem:a273231250524bc94dc9c9038d67f0b59" id="r_a273231250524bc94dc9c9038d67f0b59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a273231250524bc94dc9c9038d67f0b59">Runner</a> (std::string *cmd, std::string *err=NULL)</td></tr>
+<tr class="memdesc:a273231250524bc94dc9c9038d67f0b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classRunner.html" title="A CMD_Runner to run system commands.">Runner</a> object from a <code>cmd</code> and an <code>err</code> message pointer.  <br /></td></tr>
 <tr class="separator:a273231250524bc94dc9c9038d67f0b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5896ca718ab6df4397478ddd00ff029" id="r_ad5896ca718ab6df4397478ddd00ff029"><td class="memItemLeft" align="right" valign="top"><a id="ad5896ca718ab6df4397478ddd00ff029" name="ad5896ca718ab6df4397478ddd00ff029"></a>
-FILE *&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:ad5896ca718ab6df4397478ddd00ff029" id="r_ad5896ca718ab6df4397478ddd00ff029"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5896ca718ab6df4397478ddd00ff029">run</a> ()</td></tr>
+<tr class="memdesc:ad5896ca718ab6df4397478ddd00ff029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the command and returns the corresponding file descriptor.  <br /></td></tr>
 <tr class="separator:ad5896ca718ab6df4397478ddd00ff029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85d50ab12aa2b249a1e6676d6ecaffd2" id="r_a85d50ab12aa2b249a1e6676d6ecaffd2"><td class="memItemLeft" align="right" valign="top"><a id="a85d50ab12aa2b249a1e6676d6ecaffd2" name="a85d50ab12aa2b249a1e6676d6ecaffd2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memdesc:a85d50ab12aa2b249a1e6676d6ecaffd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the file descriptor of the command ran If the command hasn't been run, the function won't do anything. <br /></td></tr>
 <tr class="separator:a85d50ab12aa2b249a1e6676d6ecaffd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="conceptCMD__Runner.html" title="Concept describing a system that runs a command in the terminal and returns a file descriptor It has ...">CMD_Runner</a> to run system commands. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a273231250524bc94dc9c9038d67f0b59" name="a273231250524bc94dc9c9038d67f0b59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a273231250524bc94dc9c9038d67f0b59">&#9670;&#160;</a></span>Runner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Runner::Runner </td>
+          <td>(</td>
+          <td class="paramtype">std::string *</td>          <td class="paramname"><span class="paramname"><em>cmd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string *</td>          <td class="paramname"><span class="paramname"><em>err</em></span><span class="paramdefsep"> = </span><span class="paramdefval">NULL</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classRunner.html" title="A CMD_Runner to run system commands.">Runner</a> object from a <code>cmd</code> and an <code>err</code> message pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>Pointer to the command string </td></tr>
+    <tr><td class="paramname">err</td><td>Pointer to error message string (default: <code>NULL</code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad5896ca718ab6df4397478ddd00ff029" name="ad5896ca718ab6df4397478ddd00ff029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5896ca718ab6df4397478ddd00ff029">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE * Runner::run </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the command and returns the corresponding file descriptor. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns the file descriptor containing the stdout of the command ran. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="Runner_8h_source.html">Runner.h</a></li>
 <li>src/<b>Runner.cpp</b></li>

@@ -12,7 +12,7 @@
  * @return A string with the content of `f`
  * @note The string needs to be deallocated
  */
-std::string *copy_content_from_file(FILE *file);
+std::string *copy_content_from_file(FILE *f);
 
 /**@brief Runs a command and returns the file descriptor
  * @tparam T A `CMD_Runner`

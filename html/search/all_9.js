@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['webspeeddial_0',['webspeeddial',['../md_README.html',1,'']]]
+  ['sizable_0',['Sizable',['../conceptSizable.html',1,'']]],
+  ['source_1',['Source',['../md_README.html#autotoc_md2',1,'']]]
 ];

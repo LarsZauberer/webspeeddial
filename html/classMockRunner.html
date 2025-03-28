@@ -108,19 +108,74 @@ $(function(){initNavTree('classMockRunner.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">MockRunner Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A class to test the <a class="el" href="conceptCMD__Runner.html" title="Concept describing a system that runs a command in the terminal and returns a file descriptor It has ...">CMD_Runner</a> capabilities.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MockRunner_8h_source.html">MockRunner.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6336b81c3ec6b60d5f40e49f8a1296af" id="r_a6336b81c3ec6b60d5f40e49f8a1296af"><td class="memItemLeft" align="right" valign="top"><a id="a6336b81c3ec6b60d5f40e49f8a1296af" name="a6336b81c3ec6b60d5f40e49f8a1296af"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MockRunner</b> (std::string *data)</td></tr>
+<tr class="memitem:a6336b81c3ec6b60d5f40e49f8a1296af" id="r_a6336b81c3ec6b60d5f40e49f8a1296af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6336b81c3ec6b60d5f40e49f8a1296af">MockRunner</a> (std::string *data)</td></tr>
+<tr class="memdesc:a6336b81c3ec6b60d5f40e49f8a1296af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> with some given data The <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> will simulate a program that outputs the given data.  <br /></td></tr>
 <tr class="separator:a6336b81c3ec6b60d5f40e49f8a1296af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98a53dfb683b94b164b7c331073e8873" id="r_a98a53dfb683b94b164b7c331073e8873"><td class="memItemLeft" align="right" valign="top"><a id="a98a53dfb683b94b164b7c331073e8873" name="a98a53dfb683b94b164b7c331073e8873"></a>
-FILE *&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:a98a53dfb683b94b164b7c331073e8873" id="r_a98a53dfb683b94b164b7c331073e8873"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98a53dfb683b94b164b7c331073e8873">run</a> ()</td></tr>
+<tr class="memdesc:a98a53dfb683b94b164b7c331073e8873"><td class="mdescLeft">&#160;</td><td class="mdescRight">It will return the mock file descriptor.  <br /></td></tr>
 <tr class="separator:a98a53dfb683b94b164b7c331073e8873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a571edc01b1695dae969afb73b7d6fd0f" id="r_a571edc01b1695dae969afb73b7d6fd0f"><td class="memItemLeft" align="right" valign="top"><a id="a571edc01b1695dae969afb73b7d6fd0f" name="a571edc01b1695dae969afb73b7d6fd0f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memdesc:a571edc01b1695dae969afb73b7d6fd0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the <code><a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a></code> It will close the file descriptor created by the <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> This is not a destructor to enable a reuse of the same <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> instance. <br /></td></tr>
 <tr class="separator:a571edc01b1695dae969afb73b7d6fd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A class to test the <a class="el" href="conceptCMD__Runner.html" title="Concept describing a system that runs a command in the terminal and returns a file descriptor It has ...">CMD_Runner</a> capabilities. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6336b81c3ec6b60d5f40e49f8a1296af" name="a6336b81c3ec6b60d5f40e49f8a1296af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6336b81c3ec6b60d5f40e49f8a1296af">&#9670;&#160;</a></span>MockRunner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MockRunner::MockRunner </td>
+          <td>(</td>
+          <td class="paramtype">std::string *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> with some given data The <a class="el" href="classMockRunner.html" title="A class to test the CMD_Runner capabilities.">MockRunner</a> will simulate a program that outputs the given data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A pointer to a string with the contained data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a98a53dfb683b94b164b7c331073e8873" name="a98a53dfb683b94b164b7c331073e8873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98a53dfb683b94b164b7c331073e8873">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE * MockRunner::run </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It will return the mock file descriptor. </p>
+<dl class="section note"><dt>Note</dt><dd>This file descriptor has to be closed with <code>this-&gt;<a class="el" href="#a571edc01b1695dae969afb73b7d6fd0f" title="Ends the MockRunner It will close the file descriptor created by the MockRunner This is not a destruc...">close()</a></code> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="MockRunner_8h_source.html">MockRunner.h</a></li>
 <li>src/<b>MockRunner.cpp</b></li>

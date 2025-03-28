@@ -33,7 +33,7 @@ TEST_CASE("BookMark to Fzf correct", "[bookmarks_to_fzf]") {
 
 TEST_CASE("Find BookMark null array", "[find_name]") {
   vector<BookMark *> *bookmarks = NULL;
-  string find = "Hello";
+  std::string find = "Hello";
   REQUIRE(find_name(&find, bookmarks) == NULL);
 }
 
@@ -41,7 +41,7 @@ TEST_CASE("Find BookMark null element", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
-  string *find = NULL;
+  std::string *find = NULL;
   REQUIRE(find_name(find, &bookmarks) == NULL);
 }
 
@@ -49,7 +49,7 @@ TEST_CASE("Find BookMark first_ele", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
-  string find = "Hello";
+  std::string find = "Hello";
   REQUIRE(find_name(&find, &bookmarks) == &a);
 }
 
@@ -57,25 +57,25 @@ TEST_CASE("Find BookMark second_ele", "[find_name]") {
   BookMark a = {"Hello", "1"};
   BookMark b = {"World", "2"};
   vector<BookMark *> bookmarks = {&a, &b};
-  string find = "World";
+  std::string find = "World";
   REQUIRE(find_name(&find, &bookmarks) == &b);
 }
 
 ////
 
 TEST_CASE("Remove Trailing Null", "[remove_trailing]") {
-  string *a = NULL;
+  std::string *a = NULL;
   REQUIRE(remove_trailing(a) == NULL);
 }
 
 TEST_CASE("Remove Trailing No backslash n", "[remove_trailing]") {
-  string a = "test";
+  std::string a = "test";
   REQUIRE(*remove_trailing(&a) == a);
   REQUIRE(remove_trailing(&a) == &a);
 }
 
 TEST_CASE("Remove Trailing with backslash n", "[remove_trailing]") {
-  string a = "test\n";
+  std::string a = "test\n";
   REQUIRE(*remove_trailing(&a) == "test");
   REQUIRE(remove_trailing(&a) == &a);
 }
@@ -84,12 +84,12 @@ TEST_CASE("Remove Trailing with backslash n", "[remove_trailing]") {
 
 TEST_CASE("null", "[copy_content_from_file]") {
   FILE *f = NULL;
-  string *out = copy_content_from_file(f);
+  std::string *out = copy_content_from_file(f);
   REQUIRE(out == NULL);
 }
 
 TEST_CASE("hello world value", "[copy_content_from_file]") {
-  string test_str = string("hello world!");
+  std::string test_str = std::string("hello world!");
   FILE *f = fmemopen(test_str.data(), test_str.size(), "r");
   std::string *result = copy_content_from_file(f);
 
@@ -98,18 +98,18 @@ TEST_CASE("hello world value", "[copy_content_from_file]") {
 }
 
 TEST_CASE("echo hello world", "[run_cmd]") {
-    string cmd = "echo 'Hello World!'";
+    std::string cmd = "echo 'Hello World!'";
     Runner r(&cmd);
-    string *out = run_cmd(&r);
+    std::string *out = run_cmd(&r);
     REQUIRE(out != NULL);
     REQUIRE(*out == "Hello World!\n");
     delete out;
 }
 
 TEST_CASE("real output", "[run_cmd]") {
-    string data = "This is some data!";
+    std::string data = "This is some data!";
     MockRunner r(&data);
-    string *out = run_cmd(&r);
+    std::string *out = run_cmd(&r);
     REQUIRE(out != NULL);
     REQUIRE(*out == data);
     delete out;

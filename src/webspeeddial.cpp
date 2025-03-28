@@ -3,16 +3,17 @@
 #include <cstdio>
 
 #include "config.h"
-#include "commands.h"
-#include "utils.h"
 
 int main() {
     // BookMark test = {"test", "https://thealternative.ch"};
     // BookMark bookmarks[] = {test};
-    const string config_path = "/home/lars/.config/webspeeddial/config.yaml";
-    Config cfg(&config_path);
+    Config cfg = Config();
 
-    std::cout << cfg.runner << std::endl;
+    std::cout << *cfg.get_runner() << std::endl;
+    auto bm = cfg.get_bookmarks();
+    for (size_t i = 0; i < bm->size(); i++) {
+        std::cout << (*bm)[i]->name << std::endl;
+    }
 
     // string selector_string = bookmarks_to_fzf(&cfg.bookmarks, 0); 
 

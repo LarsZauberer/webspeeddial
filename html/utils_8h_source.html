@@ -116,13 +116,13 @@ $(function(){initNavTree('utils_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptBuffer.html">Buffer&lt;T, BookMark *&gt;</a></div>
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="utils_8h.html#a66d70a2ba2b1118623c40c3919313959">   20</a></span><span class="keywordtype">string</span> <a class="code hl_function" href="utils_8h.html#a66d70a2ba2b1118623c40c3919313959">bookmarks_to_fzf</a>(T *bookmarks) {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="utils_8h.html#a5bd270061e1d5e87df7f44fdb0933f1d">   20</a></span>std::string <a class="code hl_function" href="utils_8h.html#a5bd270061e1d5e87df7f44fdb0933f1d">bookmarks_to_fzf</a>(T *bookmarks) {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordflow">if</span> (!bookmarks) {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  }</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">size_t</span> n = bookmarks-&gt;size();</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keywordtype">string</span> res = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  std::string res = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (!(*bookmarks)[i])</div>
@@ -144,7 +144,7 @@ $(function(){initNavTree('utils_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">requires</span> <a class="code hl_concept" href="conceptBuffer.html">Buffer&lt;T, BookMark *&gt;</a></div>
 <div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="utils_8h.html#a8bf36d72c9dd9a04b13450e61bd70c2a">   53</a></span><a class="code hl_class" href="classBookMark.html">BookMark</a> *<a class="code hl_function" href="utils_8h.html#a8bf36d72c9dd9a04b13450e61bd70c2a">find_name</a>(<span class="keywordtype">string</span> *name, T *arr) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="utils_8h.html#a1d6ad1283951ec8caa0ddd76f09fb342">   53</a></span><a class="code hl_struct" href="structBookMark.html">BookMark</a> *<a class="code hl_function" href="utils_8h.html#a1d6ad1283951ec8caa0ddd76f09fb342">find_name</a>(std::string *name, T *arr) {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordflow">if</span> (!arr) {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  }</div>
@@ -166,14 +166,14 @@ $(function(){initNavTree('utils_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="utils_8h.html#a06447965bc667c863846f877d092e669">   79</a></span><span class="keywordtype">string</span> *<a class="code hl_function" href="utils_8h.html#a06447965bc667c863846f877d092e669">remove_trailing</a>(<span class="keywordtype">string</span> *str);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>std::string *<a class="code hl_function" href="utils_8h.html#a541418388a6fa751dc681a1edda42786">remove_trailing</a>(std::string *str);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif </span><span class="comment">// utils_h_INCLUDED</span></div>
-<div class="ttc" id="aclassBookMark_html"><div class="ttname"><a href="classBookMark.html">BookMark</a></div><div class="ttdef"><b>Definition</b> config.h:9</div></div>
-<div class="ttc" id="aconceptBuffer_html"><div class="ttname"><a href="conceptBuffer.html">Buffer</a></div><div class="ttdef"><b>Definition</b> concepts.h:18</div></div>
-<div class="ttc" id="autils_8h_html_a06447965bc667c863846f877d092e669"><div class="ttname"><a href="utils_8h.html#a06447965bc667c863846f877d092e669">remove_trailing</a></div><div class="ttdeci">string * remove_trailing(string *str)</div></div>
-<div class="ttc" id="autils_8h_html_a66d70a2ba2b1118623c40c3919313959"><div class="ttname"><a href="utils_8h.html#a66d70a2ba2b1118623c40c3919313959">bookmarks_to_fzf</a></div><div class="ttdeci">string bookmarks_to_fzf(T *bookmarks)</div><div class="ttdoc">bookmarks_to_fzf converts a Buffer of BookMark* to a syntax that can be read by fuzzy finders</div><div class="ttdef"><b>Definition</b> utils.h:20</div></div>
-<div class="ttc" id="autils_8h_html_a8bf36d72c9dd9a04b13450e61bd70c2a"><div class="ttname"><a href="utils_8h.html#a8bf36d72c9dd9a04b13450e61bd70c2a">find_name</a></div><div class="ttdeci">BookMark * find_name(string *name, T *arr)</div><div class="ttdoc">find_name takes a Buffer of BookMark* and searches for a BookMark with a specific name.</div><div class="ttdef"><b>Definition</b> utils.h:53</div></div>
+<div class="ttc" id="aconceptBuffer_html"><div class="ttname"><a href="conceptBuffer.html">Buffer</a></div><div class="ttdoc">A Buffer containing multiple elements of the same type.</div><div class="ttdef"><b>Definition</b> concepts.h:41</div></div>
+<div class="ttc" id="astructBookMark_html"><div class="ttname"><a href="structBookMark.html">BookMark</a></div><div class="ttdoc">A structure describing the relation of a name and a link.</div><div class="ttdef"><b>Definition</b> config.h:16</div></div>
+<div class="ttc" id="autils_8h_html_a1d6ad1283951ec8caa0ddd76f09fb342"><div class="ttname"><a href="utils_8h.html#a1d6ad1283951ec8caa0ddd76f09fb342">find_name</a></div><div class="ttdeci">BookMark * find_name(std::string *name, T *arr)</div><div class="ttdoc">find_name takes a Buffer of BookMark* and searches for a BookMark with a specific name.</div><div class="ttdef"><b>Definition</b> utils.h:53</div></div>
+<div class="ttc" id="autils_8h_html_a541418388a6fa751dc681a1edda42786"><div class="ttname"><a href="utils_8h.html#a541418388a6fa751dc681a1edda42786">remove_trailing</a></div><div class="ttdeci">std::string * remove_trailing(std::string *str)</div><div class="ttdef"><b>Definition</b> utils.cpp:9</div></div>
+<div class="ttc" id="autils_8h_html_a5bd270061e1d5e87df7f44fdb0933f1d"><div class="ttname"><a href="utils_8h.html#a5bd270061e1d5e87df7f44fdb0933f1d">bookmarks_to_fzf</a></div><div class="ttdeci">std::string bookmarks_to_fzf(T *bookmarks)</div><div class="ttdoc">bookmarks_to_fzf converts a Buffer of BookMark* to a syntax that can be read by fuzzy finders</div><div class="ttdef"><b>Definition</b> utils.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

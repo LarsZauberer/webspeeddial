@@ -17,13 +17,13 @@
  */
 template <typename T>
   requires Buffer<T, BookMark *>
-string bookmarks_to_fzf(T *bookmarks) {
+std::string bookmarks_to_fzf(T *bookmarks) {
   if (!bookmarks) {
     return "";
   }
 
   size_t n = bookmarks->size();
-  string res = "";
+  std::string res = "";
 
   for (size_t i = 0; i < n; i++) {
     if (!(*bookmarks)[i])
@@ -50,7 +50,7 @@ string bookmarks_to_fzf(T *bookmarks) {
  */
 template <typename T>
   requires Buffer<T, BookMark *>
-BookMark *find_name(string *name, T *arr) {
+BookMark *find_name(std::string *name, T *arr) {
   if (!arr) {
     return NULL;
   }
@@ -76,6 +76,6 @@ BookMark *find_name(string *name, T *arr) {
  * @param str Is the string that needs is beeing stripped
  * @return It returns the pointer to the modified string
  */
-string *remove_trailing(string *str);
+std::string *remove_trailing(std::string *str);
 
 #endif // utils_h_INCLUDED

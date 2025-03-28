@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bookmark_0',['BookMark',['../classBookMark.html',1,'']]]
+  ['bookmark_0',['BookMark',['../structBookMark.html',1,'']]]
 ];

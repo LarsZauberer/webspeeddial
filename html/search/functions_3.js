@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['remove_5ftrailing_0',['remove_trailing',['../utils_8h.html#a06447965bc667c863846f877d092e669',1,'utils.h']]],
-  ['run_5fcmd_1',['run_cmd',['../commands_8h.html#a07373ff1c169263a83ad1de503a6b58a',1,'commands.h']]]
+  ['get_5fbookmarks_0',['get_bookmarks',['../classConfig.html#a91e17d25885bbff3142c0aef244d4a72',1,'Config']]],
+  ['get_5frunner_1',['get_runner',['../classConfig.html#ac16806d89dcefb52ff5ce795d1b8a270',1,'Config']]]
 ];

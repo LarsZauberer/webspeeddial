@@ -1,7 +1,7 @@
 var annotated_dup =
 [
-    [ "BookMark", "classBookMark.html", null ],
-    [ "Config", "classConfig.html", null ],
-    [ "MockRunner", "classMockRunner.html", null ],
-    [ "Runner", "classRunner.html", null ]
+    [ "BookMark", "structBookMark.html", "structBookMark" ],
+    [ "Config", "classConfig.html", "classConfig" ],
+    [ "MockRunner", "classMockRunner.html", "classMockRunner" ],
+    [ "Runner", "classRunner.html", "classRunner" ]
 ];
