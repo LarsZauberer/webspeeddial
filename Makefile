@@ -17,6 +17,9 @@ $(build)/tests: $(tests)/tests.cpp $(build)/utils.o $(build)/commands.o $(build)
 $(build)/%.o: $(src)/%.cpp
 	$(CXX) -c $(CXXFLAGS) $(LD_FLAGS) -o $@ $^
 
+docs:
+	doxygen doxygen.config
+
 clean:
 	rm -f $(build)/*.o
 	rm -f $(targets)
