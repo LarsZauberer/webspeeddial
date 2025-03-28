@@ -23,6 +23,7 @@ int main() {
     BookMark* selected_bookmark = find_name(selected_str, cfg.get_bookmarks());
     if (!selected_bookmark) {
         std::cout << "Selected bookmark is not in the bookmarks list" << std::endl;
+        delete selected_str;
         return 1;
     }
 
