@@ -1,33 +1,37 @@
 #include <iostream>
 #include <cstdarg>
 #include <cstdio>
+#include "Runner.h"
+#include "utils.h"
+#include "commands.h"
 
 #include "config.h"
 
 int main() {
-    // BookMark test = {"test", "https://thealternative.ch"};
-    // BookMark bookmarks[] = {test};
     Config cfg = Config();
 
-    std::cout << *cfg.get_runner() << std::endl;
-    auto bm = cfg.get_bookmarks();
-    for (size_t i = 0; i < bm->size(); i++) {
-        std::cout << (*bm)[i]->name << std::endl;
-    }
+    std::string selector_string = bookmarks_to_fzf(cfg.get_bookmarks()); 
+    std::string select_cmd = "echo " + selector_string + " | " + *cfg.get_runner();
+    std::string runner_error = "Error: While running the runner " + *cfg.get_runner();
 
-    // string selector_string = bookmarks_to_fzf(&cfg.bookmarks, 0); 
+    Runner selecter(&select_cmd, &runner_error);
 
-    // string selected = runner(&cfg.runner, &selector_string); 
-
-    // // Remove trailing \n
-    // remove_trailing(&selected); 
+    std::string *selected_str = run_cmd(&selecter);
+    remove_trailing(selected_str);
 
     // // Find string in bookmarks
-    // BookMark* selected_bookmark = find_name(&selected, &cfg.bookmarks, 0);
-    // if (!selected_bookmark) {
-    //     std::cout << "Selected bookmark is not in the bookmarks list" << std::endl;
-    //     return 1;
-    // }
-    // xdg_open(&selected_bookmark->link); 
-    // return 0;
+    BookMark* selected_bookmark = find_name(selected_str, cfg.get_bookmarks());
+    if (!selected_bookmark) {
+        std::cout << "Selected bookmark is not in the bookmarks list" << std::endl;
+        return 1;
+    }
+
+    delete selected_str;
+
+    std::string xdg_cmd = "xdg-open " + selected_bookmark->link;
+    std::string xdg_err = "Error: Failed to use xdg-open";
+    Runner xdg(&xdg_cmd, &xdg_err);
+    delete run_cmd(&xdg);
+
+    return 0;
 }
