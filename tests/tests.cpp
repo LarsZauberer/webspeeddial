@@ -101,5 +101,5 @@ TEST_CASE("echo simple run", "[cmd_file]") {
 
 TEST_CASE("echo hello world", "[run_cmd]") {
     string cmd = "echo 'Hello World!'";
-    REQUIRE(run_cmd(&cmd) == "Hello World!");
+    REQUIRE(run_cmd(&cmd) == "Hello World!\n");
 }

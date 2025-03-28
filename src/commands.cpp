@@ -30,8 +30,7 @@ std::string copy_content_from_file(FILE *f) {
   std::string out = "";
   out.reserve(128);
   int c;
-  while (c != -1) {
-    c = fgetc(f);
+  while ((c = fgetc(f)) != -1) {
     out += (char) c;
   }
 
