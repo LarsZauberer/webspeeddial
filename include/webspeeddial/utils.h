@@ -3,10 +3,11 @@
 #ifndef utils_h_INCLUDED
 #define utils_h_INCLUDED
 
-#include "concepts.h"
 #include "config.h"
-#include <optional>
+#include "webspeeddial/File.h"
+#include "webspeeddial/Runner.h"
 #include <string>
+#include <vector>
 
 namespace core {
 
@@ -18,31 +19,7 @@ namespace core {
  * @see Buffer
  * @see BookMark
  */
-template <typename T>
-  requires Buffer<T, BookMark *>
-std::string bookmarks_to_fzf(T *bookmarks) {
-  if (!bookmarks) {
-    return "";
-  }
-
-  size_t n = bookmarks->size();
-  std::string res = "";
-
-  for (size_t i = 0; i < n; i++) {
-    if (!(*bookmarks)[i])
-      break;
-
-    if (i == n - 1) {
-      // Last element
-      res += (*bookmarks)[i]->name;
-      continue;
-    }
-
-    res += (*bookmarks)[i]->name + "\n";
-  }
-
-  return res;
-}
+std::string bookmarks_to_fzf(std::vector<BookMark*>  *bookmarks);
 
 /**@brief `find_name` takes a `Buffer` of `BookMark*` and searches for a
  * `BookMark` with a specific `name`.
@@ -51,28 +28,7 @@ std::string bookmarks_to_fzf(T *bookmarks) {
  * @param arr A pointer to a `Buffer` containing `BookMark` where the `name` is
  * searched in`
  */
-template <typename T>
-  requires Buffer<T, BookMark *>
-BookMark *find_name(std::string *name, T *arr) {
-  if (!arr) {
-    return NULL;
-  }
-  if (!name) {
-    return NULL;
-  }
-
-  size_t n = arr->size();
-
-  for (size_t i = 0; i < n; i++) {
-    if (!(*arr)[i]) {
-      continue;
-    }
-    if ((*name).compare((*arr)[i]->name) == 0) { // Check if equal
-      return (*arr)[i];
-    }
-  }
-  return NULL;
-}
+BookMark *find_name(std::string *name, std::vector<BookMark*> *arr);
 
 /**
  * `remove_trailing` removes a trailing `\n` from a giving sting
@@ -86,19 +42,7 @@ std::string *remove_trailing(std::string *str);
  * @return A string with the content of `f`
  * @note The string needs to be deallocated
  */
-template <ReadableFile F> std::string copy_content_from_file(F *f) {
-  if (!f) {
-    return "";
-  }
-  // Read stdout from the file
-  std::string out = std::string("");
-  int c;
-  while ((c = f->read_c()) != -1) {
-    out += (char)c;
-  }
-
-  return out;
-};
+std::string copy_content_from_file(File *f); 
 
 /**@brief Runs a command and returns the file descriptor
  * @tparam T A `CMD_Runner`
@@ -108,25 +52,7 @@ template <ReadableFile F> std::string copy_content_from_file(F *f) {
  * @see CMD_Runner
  * @note The string needs to be deallocated
  */
-template <typename T, typename F>
-  requires CMD_Runner<T, F>
-std::string run_cmd(T *runner) {
-  // NULL Checker
-  if (!runner) {
-    return "";
-  }
-
-  std::optional<F> f = runner->run();
-
-  if (!f.has_value()) {
-    return "";
-  }
-
-  std::string out = copy_content_from_file(&f.value());
-
-  return out;
-};
-
+std::string run_cmd(Runner *runner); 
 }; // namespace core
 
 #endif // utils_h_INCLUDED

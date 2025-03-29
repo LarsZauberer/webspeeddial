@@ -1,13 +1,14 @@
 #ifndef CMD_File_h_INCLUDED
 #define CMD_File_h_INCLUDED
 
+#include "webspeeddial/File.h"
 #include <cstdio>
 namespace core {
 
 /**@brief A wrapper for the FILE
  */
 
-class CMD_File {
+class CMD_File : public File {
     public:
         /**@brief Creates a CMD_File from a file descriptor
          */
@@ -18,7 +19,7 @@ class CMD_File {
          * @return It returns char by char from the file descriptor
          */
 
-        char read_c() {return std::fgetc(f);};
+        char read_c() override {return std::fgetc(f);};
 
         /**@brief Destroys the CMD_File object and with it also the file descriptor
          */

@@ -4,37 +4,15 @@
 #ifndef Runner_h_INCLUDED
 #define Runner_h_INCLUDED
 
-#include "webspeeddial/CMD_FILE.h"
-#include <optional>
-#include <string>
+#include "webspeeddial/File.h"
 
 namespace core {
-/**@brief A CMD_Runner to run system commands
+/**@brief A class that can execute certain things
  */
 
 class Runner {
 public:
-  /**@brief Constructs a Runner object from a `cmd` and an `err` message pointer
-   * @param cmd Pointer to the command string
-   * @param err Pointer to error message string (default: `NULL`)
-   */
-
-  Runner(std::string *cmd, std::string *err = NULL) : cmd(cmd), err(err) {};
-
-  /**@brief Runs the command and returns the corresponding file descriptor
-   * @return Returns the file descriptor containing the stdout of the command
-   * ran.
-   */
-
-  std::optional<CMD_File> run();
-
-  /**@brief Closes the file descriptor of the command ran
-   * If the command hasn't been run, the function won't do anything
-   */
-
-private:
-  std::string *cmd;
-  std::string *err;
+    virtual File *run() = 0;
 };
 
 }; // namespace core

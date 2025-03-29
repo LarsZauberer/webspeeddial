@@ -1,7 +1,5 @@
 #include "MockFile.h"
 #include "MockRunner.h"
-#include "webspeeddial/CMD_FILE.h"
-#include "webspeeddial/Runner.h"
 #include "webspeeddial/config.h"
 #include "webspeeddial/utils.h"
 #include <cstddef>
@@ -86,13 +84,15 @@ TEST(copy_content_from_file, null_test) {
 }
 
 TEST(copy_content_from_file, normal_case) {
-    testing::InSequence seq;
+  testing::InSequence seq;
 
-    MockFile f;
-    char data[] = {'a', 's', 'd', 'f', EOF};
-    for (size_t i = 0; i < sizeof(data); i++) {
-        EXPECT_CALL(f, read_c).WillOnce(testing::Return(data[i])).RetiresOnSaturation(); 
-    }
+  MockFile f;
+  char data[] = {'a', 's', 'd', 'f', EOF};
+  for (size_t i = 0; i < sizeof(data); i++) {
+    EXPECT_CALL(f, read_c)
+        .WillOnce(testing::Return(data[i]))
+        .RetiresOnSaturation();
+  }
 
   std::string result = copy_content_from_file(&f);
 

@@ -1,7 +1,8 @@
+#include "webspeeddial/File.h"
+#include "webspeeddial/Runner.h"
 #include <gmock/gmock.h>
 
-class MockRunner {
+class MockRunner : public core::Runner {
     public:
-        MOCK_METHOD(FILE*, run, (), ());
-        MOCK_METHOD(void, close, (), ());
+        MOCK_METHOD(core::File*, run, (), (override));
 };
