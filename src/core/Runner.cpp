@@ -1,26 +1,19 @@
 #include "webspeeddial/Runner.h"
+#include "webspeeddial/CMD_FILE.h"
 #include <cstdio>
 #include <iostream>
 
 namespace core {
 
-FILE *Runner::run() {
-  this->f = popen(this->cmd->data(), "r");
-  if (!this->f) {
+std::optional<CMD_File> Runner::run() {
+  FILE *f = popen(this->cmd->data(), "r");
+  if (!f) {
     if (!this->err) {
       std::cout << this->err << std::endl;
     }
-    return NULL;
+    return {};
   }
-  return this->f;
-}
-
-void Runner::close() {
-  if (!this->f) {
-    return;
-  }
-  pclose(this->f);
-  this->f = NULL;
+  return {CMD_File(f)};
 }
 
 }; // namespace core

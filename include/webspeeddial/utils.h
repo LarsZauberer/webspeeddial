@@ -5,6 +5,7 @@
 
 #include "concepts.h"
 #include "config.h"
+#include <optional>
 #include <string>
 
 namespace core {
@@ -85,27 +86,43 @@ std::string *remove_trailing(std::string *str);
  * @return A string with the content of `f`
  * @note The string needs to be deallocated
  */
-std::string *copy_content_from_file(FILE *f);
+template <ReadableFile F> std::string copy_content_from_file(F *f) {
+  if (!f) {
+    return "";
+  }
+  // Read stdout from the file
+  std::string out = std::string("");
+  int c;
+  while ((c = f->read_c()) != -1) {
+    out += (char)c;
+  }
+
+  return out;
+};
 
 /**@brief Runs a command and returns the file descriptor
  * @tparam T A `CMD_Runner`
+ * @tparam F A `ReadableFile` that the CMD_Runner will return
  * @param runner A pointer to a `CMD_Runner`
  * @return A file descriptor to the command run
  * @see CMD_Runner
  * @note The string needs to be deallocated
  */
-template <CMD_Runner T> std::string *run_cmd(T *runner) {
+template <typename T, typename F>
+  requires CMD_Runner<T, F>
+std::string run_cmd(T *runner) {
   // NULL Checker
   if (!runner) {
-    return NULL;
+    return "";
   }
 
-  FILE *f = runner->run();
-  std::string *out = copy_content_from_file(f);
+  std::optional<F> f = runner->run();
 
-  // Cleanup
-  runner->close();
-  f = NULL;
+  if (!f.has_value()) {
+    return "";
+  }
+
+  std::string out = copy_content_from_file(&f.value());
 
   return out;
 };

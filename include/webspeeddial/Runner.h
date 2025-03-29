@@ -4,6 +4,8 @@
 #ifndef Runner_h_INCLUDED
 #define Runner_h_INCLUDED
 
+#include "webspeeddial/CMD_FILE.h"
+#include <optional>
 #include <string>
 
 namespace core {
@@ -24,18 +26,15 @@ public:
    * ran.
    */
 
-  FILE *run();
+  std::optional<CMD_File> run();
 
   /**@brief Closes the file descriptor of the command ran
    * If the command hasn't been run, the function won't do anything
    */
 
-  void close();
-
 private:
   std::string *cmd;
   std::string *err;
-  FILE *f;
 };
 
 }; // namespace core

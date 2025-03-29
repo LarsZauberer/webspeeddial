@@ -3,6 +3,7 @@
 
 #include <concepts>
 #include <cstddef>
+#include <optional>
 #include <string>
 
 namespace core {
@@ -42,6 +43,16 @@ concept Sizable = requires(T t) {
 template <typename T, typename D>
 concept Buffer = Indexable<T, D> && Sizable<T>;
 
+template <typename T>
+concept ReadableFile = requires(T t) {
+    {t.read_c()} -> std::same_as<char>;
+};
+
+template <typename T>
+concept WriteableFile = requires(T t, std::string s) {
+    {t.write(s)};
+};
+
 /**@brief Concept describing a system that runs a command in the terminal and
  * returns a file descriptor It has to provide the following things
  *
@@ -49,10 +60,9 @@ concept Buffer = Indexable<T, D> && Sizable<T>;
  * - A `close()` command (closing the file descriptor)
  */
 
-template <typename T>
-concept CMD_Runner = requires(T t, std::string *cmd, std::string *err) {
-  { t.run() } -> std::same_as<FILE *>;
-  { t.close() };
+template <typename T, typename F>
+concept CMD_Runner = ReadableFile<F> && requires(T t, std::string *cmd, std::string *err) {
+  { t.run() } -> std::same_as<std::optional<F>>;
 };
 
 }; // namespace core
