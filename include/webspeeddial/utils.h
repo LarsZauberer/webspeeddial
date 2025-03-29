@@ -58,7 +58,7 @@ BookMark *find_name(std::string *name, T *arr) {
     return NULL;
   }
 
-  int n = arr->size();
+  size_t n = arr->size();
 
   for (size_t i = 0; i < n; i++) {
     if (!(*arr)[i]) {

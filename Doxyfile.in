@@ -5,3 +5,4 @@ RECURSIVE = YES
 EXTRACT_ALL = YES
 GENERATE_LATEX = NO
 QUIET = YES
+HTML_EXTRA_STYLESHEET = @CMAKE_SOURCE_DIR@/docs/doxygen-awesome/doxygen-awesome.css

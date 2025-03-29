@@ -12,8 +12,7 @@ file(GLOB_RECURSE MAIN main/*.cpp)
 
 add_library(core STATIC ${CORES})
 target_include_directories(core PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(core PUBLIC yaml-cpp)
+target_link_libraries(core yaml-cpp)
 
 add_executable(webspeeddial ${MAIN})
-target_include_directories(webspeeddial PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(webspeeddial PUBLIC core)
+target_link_libraries(webspeeddial core)
