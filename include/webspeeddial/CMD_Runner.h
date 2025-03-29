@@ -3,6 +3,7 @@
 
 #include "webspeeddial/File.h"
 #include "webspeeddial/Runner.h"
+#include <optional>
 #include <string>
 
 namespace core {
@@ -25,7 +26,7 @@ public:
    * ran.
    */
 
-  File *run();
+  std::optional<File> run();
 
   /**@brief Closes the file descriptor of the command ran
    * If the command hasn't been run, the function won't do anything

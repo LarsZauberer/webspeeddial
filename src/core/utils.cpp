@@ -1,3 +1,4 @@
+#include <optional>
 #include <string>
 #include <vector>
 #include "webspeeddial/config.h"
@@ -87,15 +88,13 @@ std::string run_cmd(Runner *runner) {
     return "";
   }
 
-  File *f = runner->run();
+  std::optional<File> f = runner->run();
 
-  if (!f) {
+  if (!f.has_value()) {
     return "";
   }
 
-  std::string out = copy_content_from_file(f);
-
-  delete f;
+  std::string out = copy_content_from_file(&f.value());
 
   return out;
 };

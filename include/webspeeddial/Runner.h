@@ -5,6 +5,7 @@
 #define Runner_h_INCLUDED
 
 #include "webspeeddial/File.h"
+#include <optional>
 
 namespace core {
 /**@brief A class that can execute certain things
@@ -12,7 +13,7 @@ namespace core {
 
 class Runner {
 public:
-    virtual File *run() = 0;
+    virtual std::optional<File> run() {return {};};
 };
 
 }; // namespace core
