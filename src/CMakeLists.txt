@@ -14,5 +14,5 @@ add_library(core STATIC ${CORES})
 target_include_directories(core PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(core yaml-cpp)
 
-add_executable(webspeeddial ${MAIN})
-target_link_libraries(webspeeddial core)
+# add_executable(webspeeddial ${MAIN})
+# target_link_libraries(webspeeddial core)

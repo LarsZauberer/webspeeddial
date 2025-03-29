@@ -1,9 +1,11 @@
 #ifndef concepts_h_INCLUDED
 #define concepts_h_INCLUDED
 
-#include "config.h"
 #include <concepts>
 #include <cstddef>
+#include <string>
+
+namespace core {
 /**@brief A Type that can be indexed and returns always the same datatype
  *
  * It has to be indexible with a `size_t`.
@@ -52,5 +54,7 @@ concept CMD_Runner = requires(T t, std::string *cmd, std::string *err) {
   { t.run() } -> std::same_as<FILE *>;
   { t.close() };
 };
+
+}; // namespace core
 
 #endif // concepts_h_INCLUDED

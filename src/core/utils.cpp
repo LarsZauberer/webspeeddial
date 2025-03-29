@@ -1,10 +1,7 @@
 #include <string>
 
-/**
- * `remove_trailing` removes a trailing `\n` from a giving sting
- * @param str Is the string that needs is beeing stripped
- * @return It returns the pointer to the modified string
- */
+namespace core {
+
 std::string *remove_trailing(std::string *str) {
     if (!str) {
         return NULL;
@@ -20,3 +17,5 @@ std::string *remove_trailing(std::string *str) {
 
     return str;
 } 
+
+};

@@ -3,6 +3,8 @@
 #include <cstdio>
 #include <cstring>
 
+namespace core {
+
 std::string *copy_content_from_file(FILE *f) {
   if (!f) {
     return NULL;
@@ -16,3 +18,5 @@ std::string *copy_content_from_file(FILE *f) {
 
   return out;
 }
+
+}; // namespace core

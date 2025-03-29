@@ -2,6 +2,8 @@
 #include "webspeeddial/utils.h"
 #include <gtest/gtest.h>
 
+using namespace core;
+
 TEST(bookmarks_to_fzf, null_test) {
   std::vector<BookMark *> *bm = NULL;
   ASSERT_EQ(bookmarks_to_fzf(bm), "");

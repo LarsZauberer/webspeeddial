@@ -3,6 +3,8 @@
 #include "webspeeddial/Runner.h"
 #include "MockRunner.h"
 
+using namespace core;
+
 TEST(copy_content_from_file, null_test) {
   FILE *f = NULL;
   std::string *out = copy_content_from_file(f);

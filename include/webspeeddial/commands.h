@@ -3,9 +3,11 @@
 #ifndef commands_h_INCLUDED
 #define commands_h_INCLUDED
 
+#include "concepts.h"
 #include <cstdio>
 #include <string>
-#include "concepts.h"
+
+namespace core {
 
 /**@brief Returns the content of a `FILE*` descriptor as a string
  * @param f A pointer to a `FILE`
@@ -21,21 +23,22 @@ std::string *copy_content_from_file(FILE *f);
  * @see CMD_Runner
  * @note The string needs to be deallocated
  */
-template <CMD_Runner T>
-std::string* run_cmd(T *runner) {
-    // NULL Checker
-    if (!runner) {
-        return NULL;
-    }
+template <CMD_Runner T> std::string *run_cmd(T *runner) {
+  // NULL Checker
+  if (!runner) {
+    return NULL;
+  }
 
-    FILE *f = runner->run();
-    std::string *out = copy_content_from_file(f);
+  FILE *f = runner->run();
+  std::string *out = copy_content_from_file(f);
 
-    // Cleanup
-    runner->close();
-    f = NULL;
+  // Cleanup
+  runner->close();
+  f = NULL;
 
-    return out;
+  return out;
 };
+
+}; // namespace core
 
 #endif // commands_h_INCLUDED

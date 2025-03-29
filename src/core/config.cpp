@@ -11,6 +11,8 @@
 #include <yaml-cpp/node/parse.h>
 #include <yaml-cpp/yaml.h>
 
+namespace core {
+
 std::filesystem::path *get_home() {
   int uid = getuid();
   struct passwd *pw = getpwuid(uid);
@@ -85,7 +87,7 @@ void Config::loader() {
   YAML::Node bm = node["Bookmarks"];
   if (bm.IsDefined() && bm.IsSequence()) {
     for (size_t i = 0; i < bm.size(); i++) {
-        const auto ele = bm[i];
+      const auto ele = bm[i];
       if (!ele["Name"].IsDefined()) {
         std::cout << "Warning: Bookmark " << i + 1 << " has no valid `Name`"
                   << std::endl;
@@ -147,3 +149,4 @@ Config::~Config() {
   }
 };
 
+}; // namespace core

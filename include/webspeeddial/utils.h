@@ -7,6 +7,8 @@
 #include "config.h"
 #include <string>
 
+namespace core {
+
 /**@brief `bookmarks_to_fzf` converts a `Buffer` of `BookMark*` to a syntax that
  * can be read by fuzzy finders
  * @tparam T A `Buffer` containing `BookMark*`
@@ -77,5 +79,7 @@ BookMark *find_name(std::string *name, T *arr) {
  * @return It returns the pointer to the modified string
  */
 std::string *remove_trailing(std::string *str);
+
+}; // namespace core
 
 #endif // utils_h_INCLUDED
