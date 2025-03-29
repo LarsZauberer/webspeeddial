@@ -1,10 +1,12 @@
 #include "MockFile.h"
 #include "MockRunner.h"
+#include "webspeeddial/CMD_Runner.h"
 #include "webspeeddial/config.h"
 #include "webspeeddial/utils.h"
 #include <cstddef>
 #include <cstdio>
 #include <gtest/gtest.h>
+#include <optional>
 
 using namespace core;
 
@@ -99,26 +101,28 @@ TEST(copy_content_from_file, normal_case) {
   ASSERT_EQ(result, "asdf");
 }
 
-// TEST(run_cmd, real_runner) {
-//   std::string cmd = "echo 'Hello World!'";
-//   Runner r(&cmd);
-//   std::string *out = run_cmd(&r);
-//   ASSERT_TRUE(out != NULL);
-//   ASSERT_EQ(*out, "Hello World!\n");
-//   delete out;
-// }
+TEST(run_cmd, real_runner) {
+  std::string cmd = "echo 'Hello World!'";
+  CMD_Runner r(&cmd);
+  std::string out = run_cmd(&r);
+  ASSERT_EQ(out, "Hello World!\n");
+}
 
-// TEST(run_cmd, mock_runner) {
-//   std::string data = "This is some data!";
-//   FILE *f = fmemopen(data.data(), data.size(), "r");
+TEST(run_cmd, mock_runner) {
+  testing::Sequence seq;
+  testing::Sequence seq2;
 
-//   MockRunner r;
-//   EXPECT_CALL(r, run()).Times(1).WillRepeatedly(testing::Return(f));
-//   EXPECT_CALL(r, close()).Times(1);
+  MockFile *f = new MockFile;
+  char data[] = {'a', 's', 'd', 'f', EOF};
+  for (size_t i = 0; i < sizeof(data); i++) {
+    EXPECT_CALL(*f, read_c).InSequence(seq).WillOnce(testing::Return(data[i]))
+        .RetiresOnSaturation();
+  }
 
-//   std::string *out = run_cmd(&r);
+  MockRunner r;
+  EXPECT_CALL(r, run()).Times(1).InSequence(seq2).WillRepeatedly(testing::Return(f));
 
-//   ASSERT_TRUE(out != NULL);
-//   ASSERT_EQ(*out, data);
-//   delete out;
-// }
+  std::string out = run_cmd(&r);
+
+  ASSERT_EQ(out, "asdf");
+}

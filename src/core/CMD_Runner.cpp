@@ -1,11 +1,10 @@
 #include <iostream>
-#include <optional>
 #include "webspeeddial/CMD_File.h"
 #include "webspeeddial/CMD_Runner.h"
 
 namespace core {
 
-std::optional<File> CMD_Runner::run() {
+File *CMD_Runner::run() {
   FILE *f = popen(this->cmd->data(), "r");
   if (!f) {
     if (!this->err) {
@@ -13,7 +12,7 @@ std::optional<File> CMD_Runner::run() {
     }
     return {};
   }
-  CMD_File cmd_file = CMD_File(f);
+  CMD_File *cmd_file = new CMD_File(f);
   return cmd_file;
 }
 

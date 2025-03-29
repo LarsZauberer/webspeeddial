@@ -13,7 +13,7 @@ namespace core {
 
 class Runner {
 public:
-    virtual std::optional<File> run() {return {};};
+    virtual File *run() {return {};};
 };
 
 }; // namespace core

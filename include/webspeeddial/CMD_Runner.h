@@ -26,7 +26,7 @@ public:
    * ran.
    */
 
-  std::optional<File> run();
+  File *run();
 
   /**@brief Closes the file descriptor of the command ran
    * If the command hasn't been run, the function won't do anything

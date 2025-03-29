@@ -1,3 +1,4 @@
+#include <iostream>
 #include <optional>
 #include <string>
 #include <vector>
@@ -75,7 +76,8 @@ std::string copy_content_from_file(File *f) {
   // Read stdout from the file
   std::string out = std::string("");
   int c;
-  while ((c = f->read_c()) != -1) {
+  while ((c = f->read_c()) > 0) {
+    // std::cout << c << ": " << (char) c << std::endl;
     out += (char)c;
   }
 
@@ -88,13 +90,14 @@ std::string run_cmd(Runner *runner) {
     return "";
   }
 
-  std::optional<File> f = runner->run();
+  File *f = runner->run();
 
-  if (!f.has_value()) {
+  if (!f) {
     return "";
   }
 
-  std::string out = copy_content_from_file(&f.value());
+  std::string out = copy_content_from_file(f);
+  delete f;
 
   return out;
 };

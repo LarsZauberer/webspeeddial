@@ -19,7 +19,7 @@ class CMD_File : public File {
          * @return It returns char by char from the file descriptor
          */
 
-        char read_c() override {return std::fgetc(f);};
+        char read_c() {return std::fgetc(f);};
 
         /**@brief Destroys the CMD_File object and with it also the file descriptor
          */
