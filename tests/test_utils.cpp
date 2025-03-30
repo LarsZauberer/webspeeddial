@@ -120,7 +120,7 @@ TEST(run_cmd, mock_runner) {
   }
 
   MockRunner r;
-  EXPECT_CALL(r, run()).Times(1).InSequence(seq2).WillRepeatedly(testing::Return(f));
+  EXPECT_CALL(r, run()).Times(1).InSequence(seq2);
 
   std::string out = run_cmd(&r);
 

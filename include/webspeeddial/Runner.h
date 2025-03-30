@@ -5,7 +5,6 @@
 #define Runner_h_INCLUDED
 
 #include "webspeeddial/File.h"
-#include <optional>
 
 namespace core {
 /**@brief A class that can execute certain things
