@@ -15,13 +15,13 @@ class ConfigManager : public IConfigManager {
 
         const Config &get_config();
         void read();
+        bool check_validity();
+        void create_default_config();
     private:
         IConfigFile *cf;
         Config cfg;
 
-        bool check_validity();
         Config default_config();
-        void write_default_config();
 };
 
 };

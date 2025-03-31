@@ -12,13 +12,18 @@ namespace core {
 
 class YamlNode : public INode {
 public:
+  YamlNode();
   YamlNode(YAML::Node node);
   ~YamlNode();
 
   bool is_defined();
+  bool is_sequence();
   std::string as_string();
-  INode *get(std::string &key);
-  void set(std::string &key, INode &node);
+  INode *get(std::string &&key);
+  void set(std::string &&key, INode &node);
+  void set(std::string &&key, std::string &value);
+  void push_back(INode &&node);
+  void push_back(std::string &&value);
   void write(std::ofstream &out);
 
 private:
