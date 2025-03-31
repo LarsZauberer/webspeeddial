@@ -11,9 +11,9 @@ class IConfigFile {
 public:
   virtual ~IConfigFile() = default;
 
-  virtual INode* read();
-  virtual void write(INode*);
-  virtual bool file_exists();
+  virtual INode* read() {return NULL;};
+  virtual void write(INode*) {};
+  virtual bool file_exists() {return false;};
 };
 
 }; // namespace core

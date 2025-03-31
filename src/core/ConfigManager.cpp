@@ -17,7 +17,7 @@ namespace core {
         unalloc_all(cfg.bookmarks);
     };
 
-    const Config &ConfigManager::get_config() {return cfg;};
+    const Config *ConfigManager::get_config() {return &cfg;};
 
     void ConfigManager::load() {
         if (!cf) {

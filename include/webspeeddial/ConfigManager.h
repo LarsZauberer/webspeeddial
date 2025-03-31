@@ -13,7 +13,7 @@ class ConfigManager : public IConfigManager {
         ConfigManager(IConfigFile *cf);
         ~ConfigManager();
 
-        const Config &get_config();
+        const Config *get_config();
         void load();
         void write();
     private:
