@@ -8,7 +8,5 @@ fn main() {
     });
 
     let selector_string = cfg.bookmarks_to_selection();
-    let selection_runner = CMDRunner::new(cfg.get_runner(), Some(cfg.bookmarks_to_selection()), Some(format!("Error: Failed to run cmd selector menu command {}", cfg.get_runner())));
-
-    CMD_Runner()
+    let selection_runner = CMDRunner::new(String::from(cfg.get_runner()), Some(cfg.bookmarks_to_selection()), Some(format!("Error: Failed to run cmd selector menu command {}", cfg.get_runner())));
 }

@@ -8,7 +8,7 @@ pub struct BookMark {
 
 impl PartialEq for BookMark {
     fn eq(&self, other: &Self) -> bool {
-
+        self.name == other.name && self.link == other.link
     }
 }
 
@@ -82,7 +82,15 @@ mod tests {
 
         let cfg = Config {runner: String::from(""), bookmarks: bms};
 
-        assert_eq!(cfg.find_bookmark(&bma.name), Some(bma));
-        assert_eq!(cfg.find_bookmark(&bmb.name), Some(bmb));
+        let search_result1 = cfg.find_bookmark(&cfg.bookmarks[0].name);
+        let search_result2 = cfg.find_bookmark(&cfg.bookmarks[1].name);
+        let search_result3 = cfg.find_bookmark("b");
+
+        assert!(search_result1.is_some());
+        assert!(search_result2.is_some());
+        assert!(search_result3.is_none());
+
+        assert_eq!(search_result1.unwrap(), &cfg.bookmarks[0]);
+        assert_eq!(search_result2.unwrap(), &cfg.bookmarks[1]);
     }
 }
