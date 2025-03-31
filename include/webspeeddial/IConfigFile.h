@@ -14,7 +14,6 @@ public:
   virtual INode* read();
   virtual void write(INode*);
   virtual bool file_exists();
-  virtual void create_dirs();
 };
 
 }; // namespace core

@@ -14,14 +14,16 @@ class ConfigManager : public IConfigManager {
         ~ConfigManager();
 
         const Config &get_config();
-        void read();
-        bool check_validity();
-        void create_default_config();
+        void load();
+        void write();
     private:
+        // Owned
         IConfigFile *cf;
         Config cfg;
 
         Config default_config();
+        bool is_valid(const INode *node);
+        void parse(const INode *node);
 };
 
 };

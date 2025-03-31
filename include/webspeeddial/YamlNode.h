@@ -20,10 +20,11 @@ public:
   bool is_sequence();
   std::string as_string();
   INode *get(std::string &&key);
+  INode *get(size_t i);
   void set(std::string &&key, INode &node);
   void set(std::string &&key, std::string &value);
-  void push_back(INode &&node);
-  void push_back(std::string &&value);
+  void push_back(INode &node);
+  void push_back(std::string &value);
   void write(std::ofstream &out);
 
 private:

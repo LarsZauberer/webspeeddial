@@ -15,10 +15,11 @@ public:
   virtual bool is_sequence() = 0;
   virtual std::string as_string() = 0;
   virtual INode *get(std::string &&key) = 0;
+  virtual INode *get(size_t i) = 0;
   virtual void set(std::string &&key, INode &node) = 0;
   virtual void set(std::string &&key, std::string &value) = 0;
-  virtual void push_back(INode &&node) = 0;
-  virtual void push_back(std::string &&value);
+  virtual void push_back(INode &node) = 0;
+  virtual void push_back(std::string &value);
   virtual void write(std::ofstream &out) = 0;
 };
 

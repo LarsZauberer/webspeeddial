@@ -2,7 +2,6 @@
 #define IConfigManager_h_INCLUDED
 
 #include "webspeeddial/Config.h"
-#include "webspeeddial/IConfigFile.h"
 
 namespace core {
 
@@ -14,9 +13,8 @@ class IConfigManager {
         virtual ~IConfigManager() = default;
 
         virtual const Config &get_config() = 0;
-        virtual void parse() = 0;
-        virtual bool check_validity() = 0;
-        virtual void create_default_config() = 0;
+        virtual void load() = 0;
+        virtual void write() = 0;
 };
 
 };

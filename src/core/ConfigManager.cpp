@@ -3,6 +3,7 @@
 #include "webspeeddial/IConfigFile.h"
 #include "webspeeddial/INode.h"
 #include "webspeeddial/YamlNode.h"
+#include "webspeeddial/utils.h"
 #include "yaml-cpp/node/node.h"
 #include <iostream>
 #include <string>
@@ -13,28 +14,33 @@ namespace core {
         if (cf) {
             delete cf;
         }
+        unalloc_all(cfg.bookmarks);
     };
 
     const Config &ConfigManager::get_config() {return cfg;};
 
-    void ConfigManager::read() {
+    void ConfigManager::load() {
         if (!cf) {
             return;
         }
 
         if (!cf->file_exists()) {
             std::cout << "Warning: No config file found" << std::endl;
-            cf->create_dirs();
-            this->create_default_config();
             this->cfg = default_config();
+            this->write();
             return;
         }
 
         INode *node = cf->read();
-        if (this->check_validity()) {
+        if (this->is_valid(node)) {
             std::cout << "Error: Config has invalid webspeeddial format. Default config will be loaded" << std::endl;
-
+            this->cfg = default_config();
+            return;
         };
+
+        this->parse(node);
+        delete node;
+        return;
     };
 
     Config ConfigManager::default_config() {
@@ -45,31 +51,40 @@ namespace core {
         };
     }
 
-    void ConfigManager::create_default_config() {
-            Config c = this->default_config();
-
-            std::vector<INode*> bm_nodes;
-            bm_nodes.reserve(32);
+    void ConfigManager::write() {
+            std::vector<INode*> nodes_to_delete;
+            nodes_to_delete.reserve(32);
 
             INode *node = new YamlNode();
             INode *bookmarks_node = new YamlNode();
-            bm_nodes.push_back(node);
-            bm_nodes.push_back(bookmarks_node);
+            nodes_to_delete.push_back(node);
+            nodes_to_delete.push_back(bookmarks_node);
 
-            node->set("Runner", c.runner);
+            node->set("Runner", cfg.runner);
             node->set("Bookmarks", *bookmarks_node);
-            for (size_t i = 0; i < c.bookmarks.size(); i++) {
-                if (!c.bookmarks[i]) {
+            for (size_t i = 0; i < cfg.bookmarks.size(); i++) {
+                if (!cfg.bookmarks[i]) {
                     continue;
                 }
                 INode *bm = new YamlNode();
-                bm_nodes.push_back(bm);
-                bm->set("Name", c.bookmarks[i]->name);
-                bm->set("Link", c.bookmarks[i]->link);
+                nodes_to_delete.push_back(bm);
+                bm->set("Name", cfg.bookmarks[i]->name);
+                bm->set("Link", cfg.bookmarks[i]->link);
                 node->get("Bookmarks")->push_back(*bm);
             }
 
-            YamlNode *ynode = new YamlNode(node);
-            cf->write(ynode);
+            cf->write(node);
+
+            unalloc_all(nodes_to_delete);
+    }
+
+    bool ConfigManager::is_valid(const INode *node) {
+        std::cout << "Debug: `core::ConfigManager::is_valid` is not implemented";
+        return true;
+    }
+
+    void ConfigManager::parse(const INode *node) {
+        std::cout << "Debug: `core::ConfigManager::parse` is not implemented";
+        this->cfg = default_config();
     }
 };
