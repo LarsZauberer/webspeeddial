@@ -167,3 +167,5 @@ cython_debug/
 # Added by cargo
 
 /target
+
+.gdb_history
