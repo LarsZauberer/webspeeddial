@@ -3,7 +3,7 @@
 #ifndef utils_h_INCLUDED
 #define utils_h_INCLUDED
 
-#include "config.h"
+#include "webspeeddial/Config.h"
 #include "webspeeddial/File.h"
 #include "webspeeddial/Runner.h"
 #include <string>
@@ -19,7 +19,7 @@ namespace core {
  * @see Buffer
  * @see BookMark
  */
-std::string bookmarks_to_fzf(std::vector<BookMark*>  *bookmarks);
+std::string bookmarks_to_fzf(std::vector<BookMark *> *bookmarks);
 
 /**@brief `find_name` takes a `Buffer` of `BookMark*` and searches for a
  * `BookMark` with a specific `name`.
@@ -28,7 +28,7 @@ std::string bookmarks_to_fzf(std::vector<BookMark*>  *bookmarks);
  * @param arr A pointer to a `Buffer` containing `BookMark` where the `name` is
  * searched in`
  */
-BookMark *find_name(std::string *name, std::vector<BookMark*> *arr);
+BookMark *find_name(std::string *name, std::vector<BookMark *> *arr);
 
 /**
  * `remove_trailing` removes a trailing `\n` from a giving sting
@@ -42,7 +42,7 @@ std::string *remove_trailing(std::string *str);
  * @return A string with the content of `f`
  * @note The string needs to be deallocated
  */
-std::string copy_content_from_file(File *f); 
+std::string copy_content_from_file(File *f);
 
 /**@brief Runs a command and returns the file descriptor
  * @tparam T A `CMD_Runner`
@@ -52,7 +52,18 @@ std::string copy_content_from_file(File *f);
  * @see CMD_Runner
  * @note The string needs to be deallocated
  */
-std::string run_cmd(Runner *runner); 
+std::string run_cmd(Runner *runner);
+
+/**@brief Pointer list cleanup
+ * @tparam T The type of the object that will be deleted
+ */
+template <typename T> void unalloc_all(std::vector<T*> &arr) {
+    for (size_t i = 0; i < arr.size(); i++) {
+        T *ele = arr[i];
+        if (ele) delete ele;
+    }
+}
+
 }; // namespace core
 
 #endif // utils_h_INCLUDED

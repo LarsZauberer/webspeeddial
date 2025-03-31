@@ -2,7 +2,7 @@
 #include <optional>
 #include <string>
 #include <vector>
-#include "webspeeddial/config.h"
+#include "webspeeddial/Config.h"
 #include "webspeeddial/Runner.h"
 #include "webspeeddial/File.h"
 

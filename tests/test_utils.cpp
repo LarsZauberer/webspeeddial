@@ -1,12 +1,13 @@
+#include "MockDelete.h"
 #include "MockFile.h"
 #include "MockRunner.h"
 #include "webspeeddial/CMD_Runner.h"
-#include "webspeeddial/config.h"
+#include "webspeeddial/Config.h"
 #include "webspeeddial/utils.h"
 #include <cstddef>
 #include <cstdio>
 #include <gtest/gtest.h>
-#include <optional>
+#include <vector>
 
 using namespace core;
 
@@ -120,9 +121,46 @@ TEST(run_cmd, mock_runner) {
   }
 
   MockRunner r;
-  EXPECT_CALL(r, run()).Times(1).InSequence(seq2);
+  EXPECT_CALL(r, run).Times(1).InSequence(seq2).WillOnce(testing::Return(f));
 
   std::string out = run_cmd(&r);
 
   ASSERT_EQ(out, "asdf");
+}
+
+TEST(run_cmd, mock_runner_fail) {
+    MockFile *f = NULL;
+    MockRunner r;
+    EXPECT_CALL(r, run).WillOnce(testing::Return(f));
+
+    std::string out = run_cmd(&r);
+
+    ASSERT_EQ(out, "");
+}
+
+TEST(unalloc_all, normal_case) {
+    MockDelete *a = new MockDelete();
+    MockDelete *b = new MockDelete();
+
+    // Doing these dummy checks so that the Mock object is recognised
+    EXPECT_CALL(*a, foo).Times(0);
+    EXPECT_CALL(*b, foo).Times(0);
+
+    std::vector<MockDelete*> vec = {a,b};
+    unalloc_all<MockDelete>(vec);
+}
+
+
+TEST(unalloc_all, null_case_somewhere) {
+    MockDelete *a = new MockDelete();
+    MockDelete *b = NULL; 
+    MockDelete *c = new MockDelete();
+
+    // Doing these dummy checks so that the Mock object is recognised
+    EXPECT_CALL(*a, foo).Times(0);
+    // EXPECT_CALL(*b, foo).Times(0);
+    EXPECT_CALL(*c, foo).Times(0);
+
+    std::vector<MockDelete*> vec = {a,b,c};
+    unalloc_all<MockDelete>(vec);
 }
