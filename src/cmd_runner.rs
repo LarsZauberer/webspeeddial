@@ -6,7 +6,7 @@ use crate::traits::Runnable;
 pub struct CMDRunner {
     cmd: String,
     args: Vec<String>,
-    input: Option<String>,
+    input: Option<Vec<String>>,
 }
 
 impl Runnable for CMDRunner {
@@ -18,7 +18,9 @@ impl Runnable for CMDRunner {
             .spawn()?;
         if let Some(inp) = &self.input {
             if let Some(mut stdin) = child.stdin.take() {
-                writeln!(stdin, "{}", inp)?;
+                for i in inp {
+                    let _ = writeln!(stdin, "{}", i);
+                }
                 drop(stdin);
             };
         }
@@ -34,7 +36,7 @@ impl Runnable for CMDRunner {
 }
 
 impl CMDRunner {
-    pub fn new(cmd: String, args: Vec<String>, input: Option<String>) -> Self {
+    pub fn new(cmd: String, args: Vec<String>, input: Option<Vec<String>>) -> Self {
         CMDRunner {
             cmd,
             args,

@@ -9,8 +9,7 @@ fn main() {
     });
 
     // Select bookmark
-    let selector_string = cfg.bookmarks_to_selection();
-    let selection_runner = CMDRunner::new(String::from(cfg.get_runner()), vec![], Some(selector_string));
+    let selection_runner = CMDRunner::new(String::from(cfg.get_runner()), vec![], Some(cfg.get_bookmarks().iter().map(|x| x.name.clone()).collect()));
     let out_wrap = selection_runner.run();
     let Ok(mut out) = out_wrap else {
         let err = out_wrap.unwrap_err();
