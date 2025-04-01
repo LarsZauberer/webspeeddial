@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct BookMark {
-    name: String,
-    link: String
+    pub name: String,
+    pub link: String
 }
 
 impl PartialEq for BookMark {
