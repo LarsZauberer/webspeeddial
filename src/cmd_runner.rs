@@ -3,20 +3,16 @@ use std::io::{Error, ErrorKind, Write};
 
 use crate::traits::Runnable;
 
-pub struct CMDRunner {
-    cmd: String,
-    args: Vec<String>,
-    input: Option<Vec<String>>,
-}
+pub struct CMDRunner {}
 
 impl Runnable for CMDRunner {
-    fn run(&self) -> Result<String, std::io::Error> {
-        let mut child = Command::new(&self.cmd)
-            .args(&self.args)
+    fn run(&self, cmd: &str, args: Vec<String>, input: Option<Vec<String>>) -> Result<String, std::io::Error> {
+        let mut child = Command::new(cmd)
+            .args(args)
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .spawn()?;
-        if let Some(inp) = &self.input {
+        if let Some(inp) = input {
             if let Some(mut stdin) = child.stdin.take() {
                 for i in inp {
                     let _ = writeln!(stdin, "{}", i);
@@ -32,15 +28,4 @@ impl Runnable for CMDRunner {
             Err(Error::new(ErrorKind::InvalidInput, "Failed to read output of command"))
         }
     }
-    
-}
-
-impl CMDRunner {
-    pub fn new(cmd: String, args: Vec<String>, input: Option<Vec<String>>) -> Self {
-        CMDRunner {
-            cmd,
-            args,
-            input,
-        }
-    }
-}
+ }
