@@ -1,0 +1,248 @@
+[
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/src",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/webspeeddial.dir/main.cpp.o -c /home/lars/GitHub/webspeeddial/src/main.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/src/main.cpp",
+  "output": "src/CMakeFiles/webspeeddial.dir/main.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilder.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/contrib/graphbuilder.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/contrib/graphbuilder.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilder.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilderadapter.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/contrib/graphbuilderadapter.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/contrib/graphbuilderadapter.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilderadapter.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/binary.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/binary.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/binary.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/binary.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/convert.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/convert.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/convert.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/convert.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/depthguard.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/depthguard.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/directives.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/directives.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/directives.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/directives.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/emit.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emit.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emit.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/emit.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitfromevents.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitfromevents.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitter.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitter.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitterstate.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitterstate.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitterutils.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/emitterutils.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/exceptions.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/exceptions.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/exp.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/exp.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/exp.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/exp.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/fptostring.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/fptostring.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/fptostring.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/fptostring.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/memory.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/memory.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/memory.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/memory.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/node.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/node.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/node.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/node.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/node_data.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/node_data.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/nodebuilder.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/nodebuilder.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/nodeevents.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/nodeevents.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/null.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/null.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/null.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/null.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/ostream_wrapper.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/ostream_wrapper.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/parse.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/parse.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/parse.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/parse.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/parser.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/parser.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/parser.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/parser.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/regex_yaml.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/regex_yaml.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scanner.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scanner.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scanscalar.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scanscalar.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scantag.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scantag.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scantoken.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/scantoken.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/simplekey.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/simplekey.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/singledocparser.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/singledocparser.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/stream.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/stream.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/stream.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/stream.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src -std=gnu++11 -fPIC -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp.dir/src/tag.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/tag.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/src/tag.cpp",
+  "output": "_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/tag.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build/util",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -std=gnu++11 -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/sandbox.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/sandbox.cpp",
+  "output": "_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build/util",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -std=gnu++11 -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp-parse.dir/parse.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/parse.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/parse.cpp",
+  "output": "_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-parse.dir/parse.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-build/util",
+  "command": "/usr/bin/c++ -DYAML_CPP_STATIC_DEFINE -I/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/include -std=gnu++11 -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/yaml-cpp-read.dir/read.cpp.o -c /home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/read.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/yaml-cpp-src/util/read.cpp",
+  "output": "_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/tests",
+  "command": "/usr/bin/c++  -I/home/lars/GitHub/webspeeddial/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/runTests.dir/test_utils.cpp.o -c /home/lars/GitHub/webspeeddial/tests/test_utils.cpp",
+  "file": "/home/lars/GitHub/webspeeddial/tests/test_utils.cpp",
+  "output": "tests/CMakeFiles/runTests.dir/test_utils.cpp.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -I/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/include -I/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -I/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/include -I/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/include -isystem /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -lto -O2 -g -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/lars/GitHub/webspeeddial/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]
