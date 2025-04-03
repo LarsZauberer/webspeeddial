@@ -25,6 +25,23 @@ Bookmark *find_bookmark(std::string &name, T &arr) {
   }
   return nullptr;
 }
+
+/**@brief A function that unallocates everything from a given array
+ * @tparam T A Buffer that carries pointers to a malloc object
+ * @tparam D The pointer to an element on the heap
+ * @param arr A reference to a Buffer with pointers to elements on the heap that will be unallocated afterwards
+ */
+template <typename T, typename D> requires Buffer<T, D*>
+void unalloc_all(T& arr) {
+    const size_t n = arr.size();
+    for (size_t i = 0; i < n; i++) {
+        if (arr[i]) {
+            delete arr[i];
+        }
+        arr[i] = nullptr;
+    } 
+}
+
 } // namespace core
 
 #endif // utils_h_INCLUDED
