@@ -47,6 +47,7 @@ void unalloc_all(T& arr) {
 /**@brief Runs a command and gives back the output
  * @tparam T The runner that is used to run the cmd command
  * @tparam F The File descriptor that is output
+ * @param runner A Runner that can run cmd commands and returns a File
  * @param cmd The command as a string
  * @param inp The input that is passed to the stdin of the command
  * @return The output of the command ran as an optional
