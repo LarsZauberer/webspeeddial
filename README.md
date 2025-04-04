@@ -14,6 +14,7 @@ The script uses a config loacted at `~/.config/webspeeddial/config.yml`. It is c
 
 ```yml
 runner: fzf
+arguments:
 bookmarks:
 - name: Webspeeddial
   link: https://github.com/LarsZauberer/webspeeddial
@@ -21,4 +22,16 @@ bookmarks:
   link: https://example.com
 ```
 
-You can also use `wofi` to view the speeddial bookmarks. Just replace `fzf` in the `runner` with `wofi --dmenu -i`.
+You can also use `wofi` to view the speeddial bookmarks. The configuration would look like this
+
+```yml
+runner: wofi
+arguments:
+- --dmenu
+- -i
+bookmarks:
+- name: Webspeeddial
+  link: https://github.com/LarsZauberer/webspeeddial
+- name: Some Website
+  link: https://example.com
+```
