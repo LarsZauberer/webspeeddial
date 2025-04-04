@@ -32,6 +32,13 @@ struct Bookmark {
       this->link = std::move(other.link);
       return *this;
   };
+
+  /**@brief Copy constructor
+   */
+  Bookmark(Bookmark &other) {
+      this->name = other.name;
+      this->link = other.link;
+  }
 };
 
 /**@brief A structure holding all the information about the bookmarks and the
@@ -51,6 +58,14 @@ struct Config {
    */
   Config(Config &&cfg) : runner(std::move(cfg.runner)) {
     bookmarks = std::move(cfg.bookmarks);
+  };
+
+  /**@brief Move assignment
+   */
+  Config& operator=(Config&& other) {
+      this->runner = std::move(other.runner);
+      this->bookmarks = std::move(other.bookmarks);
+      return *this;
   };
 };
 } // namespace core
