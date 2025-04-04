@@ -19,6 +19,7 @@ impl PartialEq for BookMark {
 /// It contains the `runner` that is used to pick a `BookMark` and all the bookmarks
 pub struct Config {
     runner: String,
+    arguments: Vec<String>,
     bookmarks: Vec<BookMark>
 }
 
@@ -27,6 +28,7 @@ impl Default for Config {
     fn default() -> Self {
         Config {
             runner: String::from("fzf"),
+            arguments: vec![],
             bookmarks: vec![BookMark {name: String::from("Webspeeddial"), link: String::from("https://github.com/LarsZauberer/webspeeddial")}]
         }
     }
@@ -34,8 +36,8 @@ impl Default for Config {
 
 impl Config {
     /// Constructor for the Config
-    pub fn new(runner: String, bms: Vec<BookMark>) -> Self {
-        Config {runner, bookmarks: bms}
+    pub fn new(runner: String, arguments: Vec<String>, bookmarks: Vec<BookMark>) -> Self {
+        Config {runner, arguments, bookmarks}
     }
 
     /// Gets a bookmark by its name
@@ -57,6 +59,10 @@ impl Config {
     pub fn get_bookmarks(&self) -> &Vec<BookMark> {
         &self.bookmarks
     }
+
+    pub fn get_arguments(&self) -> &Vec<String> {
+        &self.arguments
+    }
 }
 
 #[cfg(test)]
@@ -69,7 +75,7 @@ mod tests {
         let bmb = BookMark {name: String::from("c"), link: String::from("d")};
         let bms = vec![bma, bmb];
 
-        let cfg = Config {runner: String::from(""), bookmarks: bms};
+        let cfg = Config {runner: String::from(""), arguments: vec![], bookmarks: bms};
 
         let search_result1 = cfg.find_bookmark(&cfg.bookmarks[0].name);
         let search_result2 = cfg.find_bookmark(&cfg.bookmarks[1].name);

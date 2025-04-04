@@ -33,7 +33,7 @@ fn xdg_open<T: Runnable>(runner: &T, bm: &config::BookMark) {
 }
 
 fn get_selection<T: Runnable>(runner: &T, cfg: &Config) -> Option<String> {
-    let selection_runner = runner.run(cfg.get_runner(), vec![], Some(cfg.get_bookmarks().iter().map(|x| x.name.clone()).collect()));
+    let selection_runner = runner.run(cfg.get_runner(), cfg.get_arguments().clone(), Some(cfg.get_bookmarks().iter().map(|x| x.name.clone()).collect()));
     if selection_runner.is_err() {
         println!("Runner failed! {}", selection_runner.unwrap_err());
         return None;
@@ -60,9 +60,9 @@ mod tests {
 
         let bm = BookMark {name: String::from("hello"), link: String::from("world")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm]);
+        let cfg = Config::new(String::from("fzf"), vec![String::from("--dmenu")], vec![bm]);
 
-        r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
+        r.expect_run().with(eq("fzf"), eq(vec![String::from("--dmenu")]), eq(Some(vec![String::from("hello")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
 
         let output = get_selection(&r, &cfg);
         assert!(output.is_some());
@@ -77,7 +77,7 @@ mod tests {
         let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
         let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+        let cfg = Config::new(String::from("fzf"), vec![], vec![bm1, bm2]);
 
         r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
 
@@ -101,7 +101,7 @@ mod tests {
         let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
         let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+        let cfg = Config::new(String::from("fzf"), vec![], vec![bm1, bm2]);
 
         r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Err(std::io::Error::new(ErrorKind::NotFound, "Some testing error")));
 
@@ -137,7 +137,7 @@ mod tests {
         let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
         let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+        let cfg = Config::new(String::from("fzf"), vec![], vec![bm1, bm2]);
 
         cl.expect_load().times(1).returning(move || cfg.clone());
         r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
@@ -154,7 +154,7 @@ mod tests {
         let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
         let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+        let cfg = Config::new(String::from("fzf"), vec![], vec![bm1, bm2]);
 
         cl.expect_load().times(1).returning(move || cfg.clone());
         r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Err(std::io::Error::new(ErrorKind::NotFound, "Some testing error")));
@@ -170,7 +170,7 @@ mod tests {
         let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
         let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
 
-        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+        let cfg = Config::new(String::from("fzf"), vec![], vec![bm1, bm2]);
 
         cl.expect_load().times(1).returning(move || cfg.clone());
         r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("asdf\n")));
