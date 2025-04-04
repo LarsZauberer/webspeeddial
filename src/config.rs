@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BookMark {
     pub name: String,
     pub link: String
@@ -12,7 +12,7 @@ impl PartialEq for BookMark {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Config {
     runner: String,
     bookmarks: Vec<BookMark>

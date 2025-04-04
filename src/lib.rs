@@ -17,6 +17,7 @@ pub fn run_app<T: Runnable, C: ConfigLoader>(runner: T, cfg_loader: C) {
     let bm_wrap = cfg.find_bookmark(&selection);
     if bm_wrap.is_none() {
         println!("No bookmark found!");
+        return;
     }
     let bm = bm_wrap.unwrap();
 
@@ -93,6 +94,21 @@ mod tests {
     }
 
     #[test]
+    fn test_get_selection_multiple_fail() {
+        let mut r = MockRunnable::new();
+
+        let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
+        let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
+
+        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+
+        r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Err(std::io::Error::new(ErrorKind::NotFound, "Some testing error")));
+
+        let output = get_selection(&r, &cfg);
+        assert!(output.is_none());
+    }
+
+    #[test]
     fn test_xdg_open_normal_case() {
         let mut r = MockRunnable::new();
         let bm = BookMark {name: String::from("hello"), link: String::from("world")};
@@ -110,5 +126,54 @@ mod tests {
         r.expect_run().with(eq("xdg-open"), eq(vec![String::from("world")]), eq(None)).times(1).returning(|_, _, _| Err(std::io::Error::new(ErrorKind::NotFound, "Some testing error")));
 
         xdg_open(&r, &bm);
+    }
+
+    #[test]
+    fn test_application_normal_case() {
+        let mut r = MockRunnable::new();
+        let mut cl = MockConfigLoader::new();
+
+        let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
+        let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
+
+        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+
+        cl.expect_load().times(1).returning(move || cfg.clone());
+        r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
+        r.expect_run().with(eq("xdg-open"), eq(vec![String::from("world")]), eq(None)).times(1).returning(|_, _, _| Ok(String::from("")));
+
+        run_app(r, cl);
+    }
+
+    #[test]
+    fn test_application_fail_picker() {
+        let mut r = MockRunnable::new();
+        let mut cl = MockConfigLoader::new();
+
+        let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
+        let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
+
+        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+
+        cl.expect_load().times(1).returning(move || cfg.clone());
+        r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Err(std::io::Error::new(ErrorKind::NotFound, "Some testing error")));
+
+        run_app(r, cl);
+    }
+
+    #[test]
+    fn test_application_wrong_pick() {
+        let mut r = MockRunnable::new();
+        let mut cl = MockConfigLoader::new();
+
+        let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
+        let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
+
+        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+
+        cl.expect_load().times(1).returning(move || cfg.clone());
+        r.expect_run().with(eq("fzf"), eq(vec![]), eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("asdf\n")));
+
+        run_app(r, cl);
     }
 }
