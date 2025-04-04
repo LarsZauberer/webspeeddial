@@ -4,6 +4,7 @@
 #include "webspeeddial/CMD_File.h"
 #include <cstdio>
 #include <iostream>
+#include <optional>
 #include <string>
 namespace core {
 /**@brief A runner that runs commands on the system
@@ -21,14 +22,14 @@ public:
    * @return A CMD_File which is allocated on the head
    * @note The returned pointer has to be deallocated in the end
    */
-  CMD_File *run(std::string &cmd, std::string &input) {
+  std::optional<CMD_File> run(std::string &cmd, std::string &input) {
     std::string command = "echo '" + input + "' | " + cmd;
     FILE *f = popen(command.data(), "r");
     if (!f) {
       std::cout << "Error while executing command: " << command << std::endl;
-      return nullptr;
+      return {};
     }
-    return new CMD_File(f);
+    return {CMD_File(std::move(f))};
   }
 };
 }; // namespace core

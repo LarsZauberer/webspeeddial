@@ -11,7 +11,13 @@
 #include "webspeeddial/utils.h"
 
 TEST(find_bookmark, normal_case) {
-    std::vector<core::Bookmark> arr = {{"some", "asdf"}, {"hello", "world"}};
+    core::Bookmark bm1 = {"some", "asdf"};
+    core::Bookmark bm2 = {"hello", "world"};
+
+    std::vector<core::Bookmark> arr;
+    arr.reserve(2); 
+    arr.push_back(std::move(bm1));
+    arr.push_back(std::move(bm2));
 
     std::string key1 = "some";
     std::string key2 = "hello";
@@ -73,20 +79,14 @@ TEST(run_cmd, normal_case) {
     std::string output = "asdf";
 
     MockRunner r;
-    MockFile *f = new MockFile();
+    MockFile file(output);
+    std::optional<MockFile> f = {std::move(file)};
 
     EXPECT_CALL(r, run(cmd, inp)).Times(1).WillOnce(testing::Return(f));
 
-    testing::Sequence seq1;
-    for (size_t i = 0; i < output.size(); i++) {
-        EXPECT_CALL(*f, read_c()).InSequence(seq1).WillOnce(testing::Return(output[i]));
-    }
-    EXPECT_CALL(*f, read_c()).InSequence(seq1).WillOnce(testing::Return('\0'));
-
-    std::string *out = core::run_cmd<MockRunner, MockFile>(r, cmd, inp); 
-    ASSERT_NE(out, nullptr);
-    ASSERT_EQ(*out, output);
-    delete out;
+    std::optional<std::string> out = core::run_cmd<MockRunner, MockFile>(r, cmd, inp); 
+    ASSERT_TRUE(out.has_value());
+    ASSERT_EQ(out.value(), output);
 }
 
 TEST(run_cmd, real_world) {
@@ -94,8 +94,7 @@ TEST(run_cmd, real_world) {
     std::string inp = "";
 
     core::CMD_Runner r;
-    std::string *out = core::run_cmd<core::CMD_Runner, core::CMD_File>(r, cmd, inp);
-    ASSERT_NE(out, nullptr);
-    ASSERT_EQ(*out, "hello world\n");
-    delete out;
+    std::optional<std::string> out = core::run_cmd<core::CMD_Runner, core::CMD_File>(r, cmd, inp);
+    ASSERT_TRUE(out.has_value());
+    ASSERT_EQ(out.value(), "hello world\n");
 }

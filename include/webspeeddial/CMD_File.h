@@ -12,6 +12,7 @@ public:
   CMD_File(CMD_File &&file) {
     std::cout << "Moving CMD_File" << std::endl;
     this->f = file.f;
+    file.f = nullptr;
   };
   ~CMD_File() { if (f) delete f; };
 

@@ -5,6 +5,7 @@
 #include <concepts>
 #include <cstddef>
 #include <fstream>
+#include <optional>
 #include <string>
 namespace core {
     /**@brief A concept that describes a Buffer.
@@ -35,7 +36,7 @@ namespace core {
      */
     template <typename T, typename F>
     concept Runner = File<F> && requires(T t, std::string &cmd, std::string &input) {
-        {t.run(cmd, input)} -> std::same_as<F*>;
+        {t.run(cmd, input)} -> std::same_as<std::optional<F>>;
     };
 
     /**@brief A concept that describes a parsed node in a config file

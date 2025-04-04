@@ -53,29 +53,29 @@ void unalloc_all(T& arr) {
  * @return The output of the command ran as an optional
  */
 template <typename T, typename F> requires File<F> && Runner<T, F> 
-std::string *run_cmd(T &runner, std::string& cmd, std::string& inp) {
-    F *file = runner.run(cmd, inp); 
+std::optional<std::string> run_cmd(T &runner, std::string& cmd, std::string& inp) {
+    std::optional<F> f = runner.run(cmd, inp); 
 
-    if (!file) {
+    if (!f.has_value()) {
         std::cout << "Error while running the command: " << cmd << std::endl;
-        return nullptr;
+        return {};
     }
 
-    std::string *data = new std::string();
-    data->reserve(64);
+    F file = std::move(*f);
+
+    std::string data = std::string();
+    data.reserve(64);
 
     int c;
     while (true) {
-        c = file->read_c();
+        c = file.read_c();
         if (c <= 0) {
             break;
         }
-        *data = *data + (char) c;
+        data = data + (char) c;
     }
 
-    delete file;
-
-    return data;
+    return {std::move(data)};
 }
 
 } // namespace core
