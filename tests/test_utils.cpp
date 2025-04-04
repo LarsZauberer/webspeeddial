@@ -89,6 +89,18 @@ TEST(run_cmd, normal_case) {
     ASSERT_EQ(out.value(), output);
 }
 
+TEST(run_cmd, command_fail) {
+    std::string cmd = "mycommand";
+    std::string inp = "";
+
+    MockRunner r;
+    std::optional<MockFile> f = {};
+
+    EXPECT_CALL(r, run(cmd, inp)).Times(1).WillOnce(testing::Return(f));
+    std::optional<std::string> out = core::run_cmd<MockRunner, MockFile>(r, cmd, inp); 
+    ASSERT_TRUE(!out.has_value());
+}
+
 TEST(run_cmd, real_world) {
     std::string cmd = "echo 'hello world'";
     std::string inp = "";
