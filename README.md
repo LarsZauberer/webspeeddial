@@ -1,39 +1,24 @@
-# webspeeddial
+# Webspeeddial
 
-A speed dial system for websites
+A speed dial system for websites and files
 
 ## Installation
 
-There are no real packages at the moment only the NixOS Flake.
+### Gentoo
 
-### Source
-
-Download the `main.py` file and run this file with `python3`. This doesn't require any further dependencies.
-
-### NixOS
-
-Simply install the flake `github:larszauberer/webspeeddial` in the `#default` derivation.
+There is an ebuild on [lentoo](https://github.com/LarsZauberer/lentoo) under `app-misc` to install the package.
 
 ## Usage
 
-The script uses a config loacted at `~/.config/webspeeddial/config.json`. It is constructed of the form
+The script uses a config loacted at `~/.config/webspeeddial/config.yml`. It is constructed of the form
 
-```json
-{
-  "runner": "fzf",
-  "bookmarks": [
-    {
-      "name": "YouTube",
-      "address": "https://youtube.com"
-    },
-    {
-      "name": "Some Website",
-      "address": "https://someotherwebsite"
-    }
-  ]
-}
+```yml
+runner: fzf
+bookmarks:
+- name: Webspeeddial
+  link: https://github.com/LarsZauberer/webspeeddial
+- name: Some Website
+  link: https://example.com
 ```
 
 You can also use `wofi` to view the speeddial bookmarks. Just replace `fzf` in the `runner` with `wofi --dmenu -i`.
-
-Now, you can just run the script (or on NixOS run `webspeeddial`)
