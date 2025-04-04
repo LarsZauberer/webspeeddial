@@ -3,6 +3,7 @@ use std::io::{Error, ErrorKind, Write};
 
 use crate::traits::Runnable;
 
+/// A struct that implements the Runnable trait. It runs commands on the command line
 pub struct CMDRunner {}
 
 impl Runnable for CMDRunner {

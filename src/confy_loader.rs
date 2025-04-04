@@ -1,5 +1,6 @@
 use crate::{config::Config, traits::ConfigLoader};
 
+/// A struct that carries a `ConfigLoader`. The `Config` is loaded using Confy.
 pub struct ConfyLoader {
     project: String,
     file_name: String
@@ -15,6 +16,7 @@ impl ConfigLoader for ConfyLoader {
 }
 
 impl ConfyLoader {
+    /// Default constructor for the confy loader
     pub fn new(project: String, file_name: String) -> Self {
         ConfyLoader {
             project, file_name

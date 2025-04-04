@@ -6,6 +6,7 @@ pub mod config;
 pub mod confy_loader;
 pub mod traits;
 
+/// Main application runner. Runs the entire app with the given configuration and generics
 pub fn run_app<T: Runnable, C: ConfigLoader>(runner: T, cfg_loader: C) {
     let cfg: Config = cfg_loader.load();
 
