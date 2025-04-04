@@ -7,13 +7,14 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(googletest)
+find_package(trompeloeil REQUIRED)
 
 file(GLOB_RECURSE TESTS *.cpp)
 
 add_executable(runTests ${TESTS})
 target_include_directories(runTests PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_include_directories(runTests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(runTests gtest_main gmock_main)
+target_link_libraries(runTests gtest_main trompeloeil::trompeloeil)
 
 include(GoogleTest)
 gtest_discover_tests(runTests)
