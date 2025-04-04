@@ -46,14 +46,16 @@ fn get_selection<T: Runnable>(runner: &T, cfg: &Config) -> Option<String> {
 mod tests {
     use config::BookMark;
     use mockall::predicate;
-    use traits::{MockRunnable};
+    use traits::{MockConfigLoader, MockRunnable};
 
     use super::*;
 
     #[test]
     fn test_get_selection() {
         let mut r = MockRunnable::new();
+
         let bm = BookMark {name: String::from("hello"), link: String::from("world")};
+
         let cfg = Config::new(String::from("fzf"), vec![bm]);
 
         r.expect_run().with(predicate::eq("fzf"), predicate::eq(vec![]), predicate::eq(Some(vec![String::from("hello")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
@@ -62,5 +64,29 @@ mod tests {
         assert!(output.is_some());
         let out = output.unwrap();
         assert_eq!(out, String::from("hello"));
+    }
+
+    #[test]
+    fn test_get_selection_multiple() {
+        let mut r = MockRunnable::new();
+
+        let bm1 = BookMark {name: String::from("hello"), link: String::from("world")};
+        let bm2 = BookMark {name: String::from("some"), link: String::from("asdf")};
+
+        let cfg = Config::new(String::from("fzf"), vec![bm1, bm2]);
+
+        r.expect_run().with(predicate::eq("fzf"), predicate::eq(vec![]), predicate::eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("hello\n")));
+
+        let mut output = get_selection(&r, &cfg);
+        assert!(output.is_some());
+        let mut out = output.unwrap();
+        assert_eq!(out, String::from("hello"));
+
+        r.expect_run().with(predicate::eq("fzf"), predicate::eq(vec![]), predicate::eq(Some(vec![String::from("hello"), String::from("some")]))).times(1).returning(|_, _, _| Ok(String::from("some\n")));
+
+        output = get_selection(&r, &cfg);
+        assert!(output.is_some());
+        out = output.unwrap();
+        assert_eq!(out, String::from("some"));
     }
 }
