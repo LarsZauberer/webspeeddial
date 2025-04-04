@@ -1,11 +1,12 @@
 #ifndef MockClass_h_INCLUDED
 #define MockClass_h_INCLUDED
 
-#include <trompeloeil.hpp>
+#include "gmock/gmock.h"
+#include <gmock/gmock.h>
 
 class MockClass {
     public:
-        MAKE_MOCK0(foo, void()); 
+        MOCK_METHOD(void, foo, ()); 
 };
 
 #endif // MockClass_h_INCLUDED
