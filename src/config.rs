@@ -28,6 +28,10 @@ impl Default for Config {
 }
 
 impl Config {
+    pub fn new(runner: String, bms: Vec<BookMark>) -> Self {
+        Config {runner, bookmarks: bms}
+    }
+
     pub fn find_bookmark(&self, name: &str) -> Option<&BookMark> {
         let matches: Vec<&BookMark> = self.bookmarks.iter().filter(|x| x.name == name).collect();
         if !matches.is_empty() {
